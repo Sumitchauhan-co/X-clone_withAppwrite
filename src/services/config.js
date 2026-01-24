@@ -1,11 +1,15 @@
-import { Account, Client } from "appwrite";
+import config from "../config/config.js";
+import { Account, Client, ID, Databases } from "appwrite";
 
-const client = new Client()
+const client = new Client();
 
 client
-    .setEndpoint('https://fra.cloud.appwrite.io/v1')
-    .setProject('6963d04e00397e3ed962')
+  .setEndpoint(config.appwriteEndpoint)
+  .setProject(config.appwriteProjectId);
 
-export const account = new Account(client)
+export const account = new Account(client);
 
-export default client
+export const databases = new Databases(client);
+
+export default client;
+export { ID, Databases };

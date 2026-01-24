@@ -6,7 +6,7 @@ import Follow from "../pages/Follow";
 import NotFound from "../pages/NotFound";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
-import PrivateRoutes from "../utils/PrivateRoutes";
+import PrivateRoutes from "./privateRoutes";
 import AppLayout from "../layouts/AppLayout";
 import PublicLayout from "../layouts/PublicLayout";
 // import App from "../App";

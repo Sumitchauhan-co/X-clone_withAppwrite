@@ -1,5 +1,4 @@
-import { ID } from "appwrite";
-import { account } from "./config";
+import { ID, account } from "./config";
 
 export const signup = ({email, password, name}) => {
   return account.create({ userId: ID.unique(), email, password, name });

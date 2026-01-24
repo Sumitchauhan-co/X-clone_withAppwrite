@@ -29,7 +29,7 @@ const Signup = () => {
 
   return (
     <div className="min-h-screen max-w-screen flex flex-col md:flex-row justify-start items-center bg-black">
-      <div className="h-[25vh] md:h-full w-[50%] flex justify-center items-center">
+      <div className="h-[20vh] md:h-full w-[50%] flex justify-center items-center">
         <svg
           viewBox="0 0 24 24"
           aria-hidden="true"
@@ -41,7 +41,7 @@ const Signup = () => {
         </svg>
       </div>
       <div className="h-fit w-[75%] md:w-[50%] lg p-3 md:p-8 flex justify-center items-center group">
-        <div className="w-full md:w-[90%] lg:w-[75%] xl:w-[50%] flex flex-col text-white gap-18">
+        <div className="w-full md:w-[90%] lg:w-[75%] xl:w-[50%] flex flex-col text-white gap-10 md:gap-18">
           <div className="w-full text-center flex flex-col justify-start items-center gap-3">
             <h1 className="w-50 text-4xl md:text-5xl font-semibold group-has-hover:border-b-3 transition-all ease-in-out">
               Sign up
@@ -49,7 +49,7 @@ const Signup = () => {
             <p className="text-lg md:text-xl">To get started</p>
           </div>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-5 md:gap-8">
               <div className="flex flex-col gap-3">
                 <label className="w-15 text-xl font-semibold">Name</label>
                 <input

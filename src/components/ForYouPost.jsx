@@ -1,72 +1,17 @@
-import React from "react";
-import { useState, useEffect, useCallback, } from "react";
-import { RiErrorWarningFill } from "react-icons/ri";
-// import { useContext } from "react";
-// import FetchContext from "../contexts/FetchContext";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { formatPostTime } from "../utils/time";
+import { fetchPosts } from "../features/posts/postThunk";
 
-const ForYouPost = () => {
-  const [feed, setFeed] = useState([]);
+const Feed = () => {
+  const dispatch = useDispatch();
+  const { list, loading } = useSelector((s) => s.posts);
 
-  // Context API
-
-  // const { inHomeIsActive } = useContext(FetchContext);
   const inHomeIsActive = useSelector((state) => state.ui.inHomeIsActive);
 
-  const [loading, setLoading] = useState(true);
-  const [errorDisplay, setErrorDisplay] = useState(false);
-
-  const fetchFeed = useCallback(async () => {
-    try {
-      setLoading(true);
-      setErrorDisplay(false);
-
-      const [usersRes, postsRes, dataRes] = await Promise.all([
-        fetch("https://fake-json-api.mock.beeceptor.com/users"),
-        fetch("https://dummy-json.mock.beeceptor.com/posts"),
-        fetch("https://mp18c585b2f607c9c39b.free.beeceptor.com/data"),
-      ]);
-
-      if (![usersRes, postsRes, dataRes].every((res) => res.ok)) {
-        throw new Error("Network response not ok");
-      }
-
-      const [users, posts, data] = await Promise.all([
-        usersRes.json(),
-        postsRes.json(),
-        dataRes.json(),
-      ]);
-
-      const merged = posts.map((post) => ({
-        ...post,
-        user: users.find((u) => u.id === post.userId),
-        dataset: data.users.find((d) => d.id === post.id),
-      }));
-
-      setFeed(merged);
-    } catch (err) {
-      console.error("Fetch failed:", err);
-      setErrorDisplay(true);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
   useEffect(() => {
-    fetchFeed();
-  }, [fetchFeed]);
-
-  if (errorDisplay)
-    return (
-      inHomeIsActive === "for you" && (
-        <div className="h-full w-full text-(--current-color) flex flex-col justify-center items-center">
-          <RiErrorWarningFill className="h-10 w-10" />
-          <span className="text-[#999] italic font-semibold">
-            Fetch failed (for you) :/
-          </span>
-        </div>
-      )
-    );
+    dispatch(fetchPosts());
+  }, [dispatch]);
 
   if (loading)
     return (
@@ -77,40 +22,42 @@ const ForYouPost = () => {
       )
     );
 
+  // console.log(list)
+
   return (
     <>
       {inHomeIsActive === "for you" &&
-        feed.map((item, i) => (
+        list.map((p, i) => (
           <div
             key={i}
             className="h-fit w-full border-(--border-color) border-t border-b flex flex-col cursor-pointer"
           >
             <div className="h-fit w-full flex">
-              <div className="sm:h-full h-[75%] w-[10%] flex justify-center items-center">
-                <div className="w-10 rounded-[50%] aspect-square bg-center">
-                  <img src={item.user?.photo} alt="" />
+              <div className="sm:h-full h-[75%] w-[10%] flex justify-center items-start lg:items-center">
+                <div className="w-10 rounded-[50%] aspect-square bg-center flex justify-center items-center">
+                  {p.profile ? (
+                    <img src={p.profile} alt="" />
+                  ) : (
+                    <div className="h-6 w-6 lg:h-9 lg:w-9 border rounded-[50%] grid place-content-center lg:text-xl bg-[#84c346] text-white">
+                      <span>{p.username[0].toUpperCase()}</span>
+                    </div>
+                  )}
                 </div>
               </div>
-              <div className="h-fit w-full flex flex-col pt-2 pb-2 relative">
-                <div className="h-fit w-full flex md:flex-row flex-col">
+              <div className="h-fit w-full flex flex-col sm:pt-2 sm:pb-2 relative">
+                <div className="h-fit w-full flex flex-row">
                   <div className="h-fit">
                     <span className="text-(--current-color) font-bold pr-2 hover:underline">
-                      {item.user?.name
-                        .trim()
-                        .split(/\s+/)
-                        .slice(0, 2)
-                        .join(" ")}
+                      {p.username}
                     </span>
                   </div>
                   <div className="h-fit">
-                    <span className="text-neutral-500 text-[0.9rem]">
-                      {item.user?.username}
-                    </span>
+                    <span className="text-neutral-500 text-[0.9rem]"></span>
                     <span className="text-neutral-500 text-[0.9rem] pl-1 pr-1">
                       •
                     </span>
-                    <span className="text-neutral-500 text-[0.9rem] hover:underline">
-                      Dec 13
+                    <span className="text-neutral-500 text-[0.75rem] sm:text-[0.9rem] hover:underline">
+                      {formatPostTime(p.createdAt)}
                     </span>
                   </div>
                 </div>
@@ -131,21 +78,23 @@ const ForYouPost = () => {
                   </div>
                 </div>
                 <div className="h-fit w-full text-(--current-color) text-[0.8rem] sm:text-[0.9rem]">
-                  <span>{item.body}</span>
+                  <span>{p.content}</span>
                 </div>
               </div>
             </div>
 
             <div className="h-fit w-full flex flex-col justify-center items-start pl-[10%]">
-              <div className="h-fit w-[75%] flex items-center border border-(--border-color) rounded-xl">
-                <div className="w-full aspect-video overflow-hidden">
-                  <img
+              {p.image && (
+                <div className="h-fit w-[75%] flex items-center border border-(--border-color) rounded-xl">
+                  <div className="w-full aspect-video overflow-hidden">
+                    {/* <img
                     className="h-full w-full object-cover object-center rounded-xl"
                     src={item.dataset?.image}
                     alt=""
-                  />
+                  /> */}
+                  </div>
                 </div>
-              </div>
+              )}
               <div className="h-[6vh] w-full flex justify-between items-center">
                 <div className="h-fit w-fit flex items-center group">
                   <div className="h-8 w-8 rounded-[50%] grid place-content-center fill-neutral-500 group-hover:bg-[#1d9aed25] group-hover:fill-[#1d99ed]">
@@ -160,7 +109,7 @@ const ForYouPost = () => {
                     </svg>
                   </div>
                   <span className="text-neutral-500 text-[0.8rem] group-hover:text-[#1d99ed] relative right-1">
-                    {item.dataset?.metrics.replies}
+                    0
                   </span>
                 </div>
                 <div className="h-fit w-fit flex items-center group">
@@ -176,7 +125,7 @@ const ForYouPost = () => {
                     </svg>
                   </div>
                   <span className="text-neutral-500 text-[0.8rem] group-hover:text-[#25db88c3] relative right-1">
-                    {item.dataset?.metrics.reposts}
+                    0
                   </span>
                 </div>
                 <div className="h-fit w-fit flex items-center group">
@@ -192,7 +141,7 @@ const ForYouPost = () => {
                     </svg>
                   </div>
                   <span className="text-neutral-500 text-[0.8rem] group-hover:text-[#ed1d88ea] relative right-1">
-                    {item.dataset?.metrics.likes}
+                    0
                   </span>
                 </div>
                 <div className="h-fit w-fit flex items-center group">
@@ -208,7 +157,7 @@ const ForYouPost = () => {
                     </svg>
                   </div>
                   <span className="text-neutral-500 text-[0.8rem] group-hover:text-[#1d99ed] relative right-1">
-                    {item.dataset?.metrics.views}
+                    0
                   </span>
                 </div>
                 <div className="h-fit w-fit flex items-center pr-2">
@@ -243,4 +192,4 @@ const ForYouPost = () => {
   );
 };
 
-export default ForYouPost;
+export default Feed;
