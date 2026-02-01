@@ -1,6 +1,6 @@
 # For production
 
-In vite.config.js
+### In vite.config.js
 
 ```js
 base: "/x-clone/"
@@ -8,13 +8,13 @@ base: "/x-clone/"
 
 ## If not set gh-pages
 
-Install gh-pages as a dev dependency
+### Install gh-pages as a dev dependency
 
 ```js
 npm i --save-dev gh-pages
 ```
 
-Change in package.json
+### Change in package.json
 
 ```json
 "scripts": {
@@ -23,13 +23,6 @@ Change in package.json
 }
 ```
 
-Enable pages in github
-
-+ Repo -> Settings -> Pages
-+ Sources : gh-pages branch
-+ Folder : /(root)
-+ Save
-
 ## Run
 
 ```js
@@ -37,4 +30,11 @@ npm run build
 npm run deploy
 ```
 
-### Link : https://sumitchauhan-co.github.io/x-clone/
+### Enable pages in github
+
++ Repo -> Settings -> Pages
++ Sources : gh-pages branch
++ Folder : /(root)
++ Save
+
+### Link : https://sumitchauhan-co.github.io/x-clone_appwrite/
