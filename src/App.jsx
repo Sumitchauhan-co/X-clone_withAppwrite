@@ -10,7 +10,9 @@ function App() {
     dispatch(restoreSession());
   }, [dispatch]);
 
-  return <AppRoutes/>
+  return (
+      <AppRoutes />
+  );
 }
 
 export default App;

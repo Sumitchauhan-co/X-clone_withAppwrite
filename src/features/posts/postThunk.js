@@ -16,21 +16,33 @@ export const fetchPosts = createAsyncThunk(
 
 export const addPost = createAsyncThunk(
   "posts/add",
-  async ({ content }, thunkAPI) => {
+  async ({ content, imageFile }, thunkAPI) => {
     try {
       const { auth } = thunkAPI.getState();
-      const { user } = auth;
+      const user = auth.user;
 
-      const doc = await postAPI.createPost({
+      let imageData = {};
+
+      console.log(imageFile);
+
+      if (imageFile instanceof File) {
+        imageData = await postAPI.uploadPostImage(imageFile);
+      }
+
+      console.log("THUNK imageData :", imageData);
+
+      const payload = {
         userId: user.$id,
-        username: user.name, // signup name
+        username: user.name,
         content,
-      });
+        ...imageData,
+      };
 
-      return doc;
-    } catch (e) {
-      console.error("ADD POST ERROR:", e);
-      return thunkAPI.rejectWithValue(e.message);
+      console.log(payload);
+
+      return await postAPI.createPost(payload);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   },
 );

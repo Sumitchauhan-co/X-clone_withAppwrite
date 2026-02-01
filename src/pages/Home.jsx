@@ -1,4 +1,4 @@
-import React, { } from "react";
+import React from "react";
 import ForYouPost from "../components/ForYouPost";
 import FollowingPost from "../components/FollowingPost";
 import PhoneFooter from "../components/PhoneFooter";
@@ -6,12 +6,16 @@ import { useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setHomeActive } from "../features/ui/uiSlice";
 import PostBox from "../components/PostBox";
+import { NavLink } from "react-router-dom";
 
 const Home = () => {
   const scrollRef = useRef(null);
 
   const inHomeIsActive = useSelector((state) => state.ui.inHomeIsActive);
   const dispatch = useDispatch();
+
+  const { user } = useSelector((state) => state.auth);
+  const initial = user?.name?.[0]?.toUpperCase();
 
   const resetScroll = () => {
     if (scrollRef.current) {
@@ -26,9 +30,9 @@ const Home = () => {
     >
       {/* header for only phone */}
 
-      <div className="h-[5vh] flex justify-center items-center sm:hidden fill-[#cecece] relative shrink-0 z-3">
+      <div className="h-[7vh] flex justify-center items-center sm:hidden fill-[#cecece] relative shrink-0 z-3">
         <div className="h-6 w-6 border rounded-[50%] grid place-content-center bg-[#84c346] text-[#eaeaea] text-sm absolute top-3 left-3 cursor-pointer">
-          <span>S</span>
+          <span>{initial}</span>
         </div>
         <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6">
           <g>
@@ -78,12 +82,28 @@ const Home = () => {
 
       {/* whats happening container for other than phone*/}
 
-      <PostBox/>
+      <PostBox />
 
       {/* Post */}
 
       <ForYouPost />
       <FollowingPost />
+
+      {/* post icon in phone */}
+
+        <NavLink 
+        to={'/x-clone/post'}
+        className="h-10 w-10 fixed sm:hidden bottom-15 right-5 bg-blue-400 rounded-[50%] flex justify-center items-center opacity-90 shadow-2xl shadow-white/50">
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            class="h-5 w-5 invert"
+          >
+            <g>
+              <path d="M23 3c-6.62-.1-10.38 2.421-13.05 6.03C7.29 12.61 6 17.331 6 22h2c0-1.007.07-2.012.19-3H12c4.1 0 7.48-3.082 7.94-7.054C22.79 10.147 23.17 6.359 23 3zm-7 8h-1.5v2H16c.63-.016 1.2-.08 1.72-.188C16.95 15.24 14.68 17 12 17H8.55c.57-2.512 1.57-4.851 3-6.78 2.16-2.912 5.29-4.911 9.45-5.187C20.95 8.079 19.9 11 16 11zM4 9V6H1V4h3V1h2v3h3v2H6v3H4z"></path>
+            </g>
+          </svg>
+        </NavLink>
 
       {/* footer for only phone */}
 

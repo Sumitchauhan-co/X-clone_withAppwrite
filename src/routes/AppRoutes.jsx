@@ -9,6 +9,7 @@ import Signup from "../pages/Signup";
 import PrivateRoutes from "./privateRoutes";
 import AppLayout from "../layouts/AppLayout";
 import PublicLayout from "../layouts/PublicLayout";
+import Post from "../pages/Post"
 // import App from "../App";
 
 const AppRoutes = () => {
@@ -26,6 +27,7 @@ const AppRoutes = () => {
           <Route path="/x-clone/explore" element={<Explore />} />
           <Route path="/x-clone/notification" element={<Notification />} />
           <Route path="/x-clone/follow" element={<Follow />} />
+          <Route path="/x-clone/post" element={<Post />} />
         </Route>
       </Route>
 

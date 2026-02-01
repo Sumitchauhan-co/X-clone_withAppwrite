@@ -11,7 +11,7 @@ const Section1 = () => {
   const { user } = useSelector((state) => state.auth);
   const initial = user?.name?.[0]?.toUpperCase();
   const username = user?.name?.toUpperCase();
-  const userId = user?.$id?.toUpperCase();
+  const userId = user?.$id?.toUpperCase().toString().substring(0,10)+".....";
 
   const handleLogout = async () => {
     await dispatch(logoutUser());
@@ -256,7 +256,9 @@ const Section1 = () => {
 
         {/* post  button */}
 
-        <div className="h-[7vh] xl:w-auto w-[7vh] flex justify-start items-center mt-2 xl:ml-0 ml-2">
+        <div
+          className="h-[8vh] xl:w-auto w-[8vh] flex justify-start items-center mt-2 xl:ml-0 ml-2"
+        >
           <div className="xl:h-full h-[80%] w-[80%] xl:w-[85%] border rounded-[50%] xl:rounded-3xl bg-white hover:bg-neutral-200 flex justify-center items-center cursor-pointer">
             <span className="text-black font-semibold xl:block hidden">
               Post
@@ -275,54 +277,51 @@ const Section1 = () => {
 
         {/* user profile */}
 
-        
-          <div
-            className="h-[9vh] w-[95%] hover:bg-(--hover-color) absolute bottom-0 border rounded-4xl lg:p-3 p-0 lg:ml-0 m-3 cursor-pointer"
-          >
-            <div className="h-full w-full group flex items-center" tabIndex="0">
-              <div className="h-9 w-9 border rounded-[50%] grid place-content-center lg:text-xl bg-[#84c346] text-white">
-                <span>{initial}</span>
+        <div className="h-[9vh] w-[95%] hover:bg-(--hover-color) absolute bottom-0 border rounded-4xl lg:p-3 p-0 lg:ml-0 m-3 cursor-pointer">
+          <div className="h-full w-full group flex items-center" tabIndex="0">
+            <div className="h-9 w-9 border rounded-[50%] grid place-content-center lg:text-xl bg-[#84c346] text-white">
+              <span>{initial}</span>
+            </div>
+            <div className="h-full w-[70%] hidden xl:flex flex-col p-[0_15px_0_15px] overflow-hidden">
+              <div className="h-[50%] text-white flex justify-start items-center font-bold text-[0.9rem]  text-nowrap">
+                <span>{username}</span>
               </div>
-              <div className="h-full w-[70%] hidden xl:flex flex-col p-[0_15px_0_15px] overflow-hidden">
-                <div className="h-[50%] text-white flex justify-start items-center font-bold text-[0.9rem]  text-nowrap">
-                  <span>{username}</span>
-                </div>
-                <div className="h-[50%] text-[#7d7d7d] flex justify-start items-center text-sm">
-                  <span>{userId}</span>
-                </div>
+              <div className="h-[50%] text-[#7d7d7d] flex justify-start items-center text-sm">
+                <span>{userId}</span>
               </div>
-              <div className="h-[5vmin] w-[5vmin] hidden xl:flex justify-end items-center fill-(--current-color)">
-                <svg viewBox="0 0 24 24" aria-hidden="true" class="h-5 w-5">
+            </div>
+            <div className="h-[5vmin] w-[5vmin] hidden xl:flex justify-end items-center fill-(--current-color)">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="h-5 w-5">
+                <g>
+                  <path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path>
+                </g>
+              </svg>
+            </div>
+
+            <div className="h-fit w-70 invisible group-focus-within:visible fixed z-2 left-25 bottom-25 flex flex-col justify-center rounded-2xl shadow-white shadow-[0_0_7px_rgba(0,0,0,0.05)] text-white text-sm font-bold bg-black">
+              <div className="h-10 pl-5 mt-3 w-full flex justify-start items-center hover:bg-[#16181C]">
+                <span>Add an existing account</span>
+              </div>
+              <div
+                onClick={handleLogout}
+                className="h-10 pl-5 mb-3 w-full flex justify-start items-center hover:bg-[#16181C]"
+              >
+                <span>Log out</span>
+              </div>
+              <div className="w-full flex justify-center items-center relative">
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  class="absolute h-3 w-3 invert rotate-180 -bottom-2.25"
+                >
                   <g>
-                    <path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path>
+                    <path d="M22 17H2L12 6l10 11z"></path>
                   </g>
                 </svg>
               </div>
-
-              <div className="h-fit w-70 invisible group-focus-within:visible fixed z-2 left-25 bottom-25 flex flex-col justify-center rounded-2xl shadow-white shadow-[0_0_7px_rgba(0,0,0,0.05)] text-white text-sm font-bold bg-black">
-                <div className="h-10 pl-5 mt-3 w-full flex justify-start items-center hover:bg-[#16181C]">
-                  <span>Add an existing account</span>
-                </div>
-                <div
-                  onClick={handleLogout}
-                  className="h-10 pl-5 mb-3 w-full flex justify-start items-center hover:bg-[#16181C]"
-                >
-                  <span>Log out</span>
-                </div>
-                <div className="w-full flex justify-center items-center relative">
-                  <svg
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                    class="absolute h-3 w-3 invert rotate-180 -bottom-2.25"
-                  >
-                    <g>
-                      <path d="M22 17H2L12 6l10 11z"></path>
-                    </g>
-                  </svg>
-                </div>
-              </div>
             </div>
           </div>
+        </div>
       </div>
     </div>
   );

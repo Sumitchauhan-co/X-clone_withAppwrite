@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { formatPostTime } from "../utils/time";
 import { fetchPosts } from "../features/posts/postThunk";
+import { getFileUrl } from "../services/posts";
 
 const Feed = () => {
   const dispatch = useDispatch();
@@ -13,6 +14,10 @@ const Feed = () => {
     dispatch(fetchPosts());
   }, [dispatch]);
 
+  if (list.length > 0) {
+    console.log("for you post : list ->", list);
+  }
+
   if (loading)
     return (
       inHomeIsActive === "for you" && (
@@ -21,8 +26,6 @@ const Feed = () => {
         </div>
       )
     );
-
-  // console.log(list)
 
   return (
     <>
@@ -84,14 +87,15 @@ const Feed = () => {
             </div>
 
             <div className="h-fit w-full flex flex-col justify-center items-start pl-[10%]">
-              {p.image && (
+              {p.imageId && (
                 <div className="h-fit w-[75%] flex items-center border border-(--border-color) rounded-xl">
                   <div className="w-full aspect-video overflow-hidden">
-                    {/* <img
-                    className="h-full w-full object-cover object-center rounded-xl"
-                    src={item.dataset?.image}
-                    alt=""
-                  /> */}
+                    <img
+                      className="h-full w-full object-cover object-center rounded-xl"
+                      src={getFileUrl(p.imageId)}
+                      // url = [ENDPOINT]/storage/buckets/[BUCKET_ID]/files/[imageId]/preview?project=[PROJECT_ID]
+                      alt="post"
+                    />
                   </div>
                 </div>
               )}
