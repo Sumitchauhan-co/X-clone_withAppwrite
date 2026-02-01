@@ -9,29 +9,28 @@ import Signup from "../pages/Signup";
 import PrivateRoutes from "./privateRoutes";
 import AppLayout from "../layouts/AppLayout";
 import PublicLayout from "../layouts/PublicLayout";
-import Post from "../pages/Post"
+import Post from "../pages/Post";
 // import App from "../App";
 
 const AppRoutes = () => {
   return (
-
     <Routes>
       <Route element={<PublicLayout />}>
-        <Route path="/x-clone/login" element={<Login />} />
-        <Route path="/x-clone/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Route>
 
       <Route element={<PrivateRoutes />}>
         <Route element={<AppLayout />}>
-          <Route path="/x-clone/home" element={<Home />} />
-          <Route path="/x-clone/explore" element={<Explore />} />
-          <Route path="/x-clone/notification" element={<Notification />} />
-          <Route path="/x-clone/follow" element={<Follow />} />
-          <Route path="/x-clone/post" element={<Post />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/notification" element={<Notification />} />
+          <Route path="/follow" element={<Follow />} />
+          <Route path="/post" element={<Post />} />
         </Route>
       </Route>
 
-      <Route path="/x-clone" element={<Navigate to="/x-clone/login" />} />
+      <Route path="/x-clone" element={<Navigate to="/login" />} />
 
       <Route path="*" element={<NotFound />} />
     </Routes>

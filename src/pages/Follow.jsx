@@ -17,7 +17,7 @@ function Follow() {
         <div className="h-[7vh] w-[95%] flex justify-between items-center">
           <div className="h-full w-20 sm:w-27 flex justify-between items-center text-md md:text-lg font-bold text-(--current-color)">
             <NavLink
-              to={`/x-clone/home`}
+              to={`/home`}
               className="h-8 w-8 grid place-content-center fill-(--current-color) rounded-[50%] hover:bg-[#1b1b1b]"
             >
               <svg viewBox="0 0 24 24" aria-hidden="true" class="h-5 w-5">

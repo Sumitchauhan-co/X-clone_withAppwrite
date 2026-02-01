@@ -7,7 +7,7 @@ const NotFound = () => {
       <div className="text-3xl sm:text-5xl">
         <span>404 Not Found</span>
       </div>
-      <NavLink to={`/x-clone/home`} className={`flex flex-col`}>
+      <NavLink to={`/home`} className={`flex flex-col`}>
         <button className="h-7 w-20 sm:h-12 sm:w-30 text-sm sm:text-[1rem] border border-(--current-color) rounded-2xl animate-pulse">
           Click here
         </button>

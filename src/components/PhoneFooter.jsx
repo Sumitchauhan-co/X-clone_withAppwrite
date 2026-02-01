@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 function PhoneFooter() {
   return (
     <div className="h-[6vh] w-full fill-(--current-color) bg-black flex sm:hidden justify-around items-center fixed bottom-0 border-(--border-color) border-t z-1">
-      <NavLink to={`/x-clone/home`}>
+      <NavLink to={`/home`}>
         {({ isActive }) => (
           <>
             <div className="h-6 w-6 fill-(--current-color) flex items-center justify-center">
@@ -25,7 +25,7 @@ function PhoneFooter() {
           </>
         )}
       </NavLink>
-      <NavLink to={`/x-clone/explore`}>
+      <NavLink to={`/explore`}>
         {({ isActive }) => (
           <>
             <div className="h-6 w-6 fill-(--current-color) flex items-center justify-center">
@@ -46,7 +46,7 @@ function PhoneFooter() {
           </>
         )}
       </NavLink>
-      <NavLink to={`/x-clone/grok`}>
+      <NavLink to={`/grok`}>
         {({ isActive }) => (
           <>
             <div className="h-6 w-6 fill-(--current-color) flex items-center justify-center">
@@ -70,7 +70,7 @@ function PhoneFooter() {
           </>
         )}
       </NavLink>
-      <NavLink to={`/x-clone/notification`}>
+      <NavLink to={`/notification`}>
         {({ isActive }) => (
           <>
             <div className="h-6 w-6 fill-(--current-color) flex items-center justify-center">
@@ -91,16 +91,12 @@ function PhoneFooter() {
           </>
         )}
       </NavLink>
-      <NavLink to={`/x-clone/chat`}>
+      <NavLink to={`/chat`}>
         {({ isActive }) => (
           <>
             <div className="h-6 w-6 fill-(--current-color) flex items-center justify-center">
               {isActive ? (
-                <svg
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  class=""
-                >
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="">
                   <g>
                     <path d="M1.998 4.499c0-.828.671-1.499 1.5-1.499h17c.828 0 1.5.671 1.5 1.499v2.858l-10 4.545-10-4.547V4.499zm0 5.053V19.5c0 .828.671 1.5 1.5 1.5h17c.828 0 1.5-.672 1.5-1.5V9.554l-10 4.545-10-4.547z"></path>
                   </g>

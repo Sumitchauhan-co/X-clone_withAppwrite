@@ -3,7 +3,7 @@
 ### In vite.config.js
 
 ```js
-base: "/x-clone/"
+base: "/";
 ```
 
 ## If not set gh-pages
@@ -32,9 +32,9 @@ npm run deploy
 
 ### Enable pages in github
 
-+ Repo -> Settings -> Pages
-+ Sources : gh-pages branch
-+ Folder : /(root)
-+ Save
+- Repo -> Settings -> Pages
+- Sources : gh-pages branch
+- Folder : /(root)
+- Save
 
 ### Link : https://sumitchauhan-co.github.io/x-clone_appwrite/

@@ -45,12 +45,8 @@ const Post = () => {
 
   return (
     <div className="min-h-screen max-w-screen border-[0_1px_0_1px] border-(--border-color) flex flex-col pb-50 relative overflow-y-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-      <div
-        className="h-[8vh] flex justify-between items-center p-3 mb-2"
-      >
-        <NavLink 
-        to={'/x-clone/home'}
-        className="">
+      <div className="h-[8vh] flex justify-between items-center p-3 mb-2">
+        <NavLink to={"/home"} className="">
           <svg viewBox="0 0 24 24" aria-hidden="true" class="h-5 w-5 invert">
             <g>
               <path d="M7.414 13l5.043 5.04-1.414 1.42L3.586 12l7.457-7.46 1.414 1.42L7.414 11H21v2H7.414z"></path>

@@ -24,7 +24,7 @@ const Signup = () => {
   };
 
   useEffect(() => {
-    if (user) navigate("/x-clone/home");
+    if (user) navigate("/home");
   }, [user, navigate]);
 
   return (
@@ -102,7 +102,9 @@ const Signup = () => {
                   </span>
                 </div>
                 {errors.password?.message && (
-                  <p className="text-sm text-red-500">{errors.password.message}</p>
+                  <p className="text-sm text-red-500">
+                    {errors.password.message}
+                  </p>
                 )}
               </div>
               <div>

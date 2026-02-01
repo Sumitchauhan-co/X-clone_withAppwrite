@@ -22,7 +22,7 @@ function Whatshappening({ isReq }) {
           Lorem ipsum, dolor
         </p>
         <p className="h-[25%] w-full flex justify-start items-center text-wrap text-neutral-500 text-[0.75rem] md:text-[0.8rem]">
-          Lorem 
+          Lorem
         </p>
         <div className="h-10 w-10 flex justify-end items-center fill-neutral-400 absolute right-3 top-3">
           <svg viewBox="0 0 24 24" aria-hidden="true" class="h-4 w-4">
@@ -32,12 +32,14 @@ function Whatshappening({ isReq }) {
           </svg>
         </div>
       </div>
-      {!isReq && <Link
-        to={`/x-clone/explore`}
-        className="h-12 w-full p-3 hover:bg-neutral-950 rounded-b-2xl flex justify-start items-center text-blue-400 text-[0.9rem] cursor-pointer"
-      >
-        <span>Show more</span>
-      </Link>}
+      {!isReq && (
+        <Link
+          to={`/explore`}
+          className="h-12 w-full p-3 hover:bg-neutral-950 rounded-b-2xl flex justify-start items-center text-blue-400 text-[0.9rem] cursor-pointer"
+        >
+          <span>Show more</span>
+        </Link>
+      )}
     </div>
   );
 }

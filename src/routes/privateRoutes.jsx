@@ -15,11 +15,7 @@ const PrivateRoutes = () => {
       </div>
     );
 
-  return isAuthenticated ? (
-    <Outlet />
-  ) : (
-    <Navigate to="/x-clone/login" replace />
-  );
+  return isAuthenticated ? <Outlet /> : <Navigate to="/login" replace />;
 };
 
 export default PrivateRoutes;

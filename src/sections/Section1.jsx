@@ -11,11 +11,11 @@ const Section1 = () => {
   const { user } = useSelector((state) => state.auth);
   const initial = user?.name?.[0]?.toUpperCase();
   const username = user?.name?.toUpperCase();
-  const userId = user?.$id?.toUpperCase().toString().substring(0,10)+".....";
+  const userId = user?.$id?.toUpperCase().toString().substring(0, 10) + ".....";
 
   const handleLogout = async () => {
     await dispatch(logoutUser());
-    navigate("/x-clone/login", { replace: true });
+    navigate("/login", { replace: true });
   };
 
   return (
@@ -38,7 +38,7 @@ const Section1 = () => {
         <ul className="h-[67vh] flex flex-col justify-start list-none">
           <li className="h-[10%] w-full group cursor-pointer">
             <NavLink
-              to={`/x-clone/home`}
+              to={`/home`}
               className="h-full w-fit group-hover:bg-(--hover-color) flex items-center justify-start rounded-[25px] pl-5"
             >
               {({ isActive }) => (
@@ -71,7 +71,7 @@ const Section1 = () => {
           </li>
           <li className="h-[10%] w-full group cursor-pointer">
             <NavLink
-              to={`/x-clone/explore`}
+              to={`/explore`}
               className="h-full w-fit group-hover:bg-(--hover-color) flex items-center justify-start rounded-[25px] pl-5"
             >
               {({ isActive }) => (
@@ -104,7 +104,7 @@ const Section1 = () => {
           </li>
           <li className="h-[10%] w-full group cursor-pointer">
             <NavLink
-              to={`/x-clone/notification`}
+              to={`/notification`}
               className="h-full w-fit group-hover:bg-(--hover-color) flex items-center justify-start rounded-[25px] pl-5"
             >
               {({ isActive }) => (
@@ -137,7 +137,7 @@ const Section1 = () => {
           </li>
           <li className="h-[10%] w-full group cursor-pointer">
             <NavLink
-              to={`/x-clone/follow`}
+              to={`/follow`}
               className="h-full w-fit group-hover:bg-(--hover-color) flex items-center justify-start rounded-[25px] pl-5"
             >
               {({ isActive }) => (
@@ -256,9 +256,7 @@ const Section1 = () => {
 
         {/* post  button */}
 
-        <div
-          className="h-[8vh] xl:w-auto w-[8vh] flex justify-start items-center mt-2 xl:ml-0 ml-2"
-        >
+        <div className="h-[8vh] xl:w-auto w-[8vh] flex justify-start items-center mt-2 xl:ml-0 ml-2">
           <div className="xl:h-full h-[80%] w-[80%] xl:w-[85%] border rounded-[50%] xl:rounded-3xl bg-white hover:bg-neutral-200 flex justify-center items-center cursor-pointer">
             <span className="text-black font-semibold xl:block hidden">
               Post

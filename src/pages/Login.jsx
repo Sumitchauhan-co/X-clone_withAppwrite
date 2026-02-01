@@ -29,7 +29,7 @@ const Login = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/x-clone/home");
+      navigate("/home");
     }
   }, [isAuthenticated, auth, navigate]);
 
@@ -127,7 +127,7 @@ const Login = () => {
                   <div className="w-full flex justify-center text-sm sm:text-lg gap-2">
                     <p className="text-neutral-400">Don't have an account?</p>
                     <span className="cursor-pointer hover:underline text-lg sm:text-xl">
-                      <Link to="/x-clone/signup">Signup</Link>
+                      <Link to="/signup">Signup</Link>
                     </span>
                   </div>
                   <div className="w-full text-center">

@@ -6,15 +6,15 @@ import WhoToFollow from "../components/WhoToFollow";
 
 const Section3 = () => {
   const location = useLocation();
-  const isExploreActive = location.pathname === "/x-clone/explore";
-  const isNotificationActive = location.pathname === "/x-clone/notification";
-  const isFollowActive = location.pathname === "/x-clone/follow";
+  const isExploreActive = location.pathname === "/explore";
+  const isNotificationActive = location.pathname === "/notification";
+  const isFollowActive = location.pathname === "/follow";
 
   return (
     <div className="h-full w-[90%] xl:w-[67%] hidden lg:flex flex-col gap-3 ml-[5%] pb-25 overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
       {/* search bar */}
 
-      {(!isExploreActive )&& (
+      {!isExploreActive && (
         <div className="h-[6vh] w-full flex justify-center items-center mt-1">
           <div className="h-full w-full flex justify-start items-center border-(--border-color) rounded-4xl border">
             <div className="h-10 w-10 fill-neutral-500 flex justify-center items-center">
@@ -39,15 +39,15 @@ const Section3 = () => {
         <div className="h-px w-full border border-(--border-color) mt-3"></div>
       )}
 
-      {(!isNotificationActive && !isFollowActive) && (<TodaysNews isReq={false} />)}
+      {!isNotificationActive && !isFollowActive && <TodaysNews isReq={false} />}
 
       {/* whats happening */}
 
-      {!isExploreActive && (<Whatshappening isReq={false} />)}
+      {!isExploreActive && <Whatshappening isReq={false} />}
 
       {/* who to follow */}
 
-      {!isFollowActive && (<WhoToFollow isReq={false}/>)}
+      {!isFollowActive && <WhoToFollow isReq={false} />}
 
       {/* footer */}
 
