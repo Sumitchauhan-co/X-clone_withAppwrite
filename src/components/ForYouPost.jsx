@@ -36,7 +36,7 @@ const Feed = () => {
             className="h-fit w-full border-(--border-color) border-t border-b flex flex-col cursor-pointer"
           >
             <div className="h-fit w-full flex mb-2">
-              <div className="sm:h-full h-[75%] max-w-[10%] flex justify-center items-start lg:items-center">
+              <div className="sm:h-full h-[75%] max-w-[15%] flex justify-center items-start lg:items-center">
                 <div className="min-w-10 rounded-[50%] aspect-square bg-center flex justify-center items-center shrink">
                   {p.profile ? (
                     <img src={p.profile} alt="" />
@@ -47,7 +47,7 @@ const Feed = () => {
                   )}
                 </div>
               </div>
-              <div className="h-fit w-full flex flex-col sm:pt-2 sm:pb-2 relative gap-2 m-2 ml-1">
+              <div className="h-fit w-full flex flex-col sm:pt-2 sm:pb-2 relative gap-2 m-2 ml-1 sm:ml-2 mt-2 sm:mt-0">
                 <div className="h-fit w-full flex flex-row">
                   <div className="h-fit">
                     <span className="text-(--current-color) font-bold pr-2 hover:underline">
