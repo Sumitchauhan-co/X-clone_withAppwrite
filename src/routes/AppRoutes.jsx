@@ -30,7 +30,8 @@ const AppRoutes = () => {
         </Route>
       </Route>
 
-      <Route path="/x-clone" element={<Navigate to="/login" />} />
+      {/* <Route path="/x-clone" element={<Navigate to="/login" />} /> */}
+      <Route path="/" element={<Navigate to="/login" />} />
 
       <Route path="*" element={<NotFound />} />
     </Routes>

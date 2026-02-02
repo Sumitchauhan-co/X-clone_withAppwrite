@@ -56,7 +56,7 @@ const Home = () => {
               inHomeIsActive === "for you"
                 ? `text-(--current-color) border-[0_0_5px_0] border-[#1D9Bf0]`
                 : `text-neutral-500`
-            } font-semibold text-[0.9rem] sm:text-[1rem] grid place-content-center`}
+            } font-semibold text-[0.9rem] sm:text-[1rem] flex justify-start items-center`}
           >
             <span>For you</span>
           </div>
@@ -93,7 +93,7 @@ const Home = () => {
 
       <NavLink
         to={"/post"}
-        className="h-10 w-10 fixed sm:hidden bottom-15 right-5 bg-blue-400 rounded-[50%] flex justify-center items-center opacity-90 shadow-2xl shadow-white/50"
+        className="h-12 w-12 fixed sm:hidden bottom-15 right-5 bg-blue-400 rounded-[50%] flex justify-center items-center opacity-90 shadow-2xl shadow-white/50"
       >
         <svg viewBox="0 0 24 24" aria-hidden="true" class="h-5 w-5 invert">
           <g>

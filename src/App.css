@@ -8,6 +8,8 @@
   --current-color: rgb(231, 233, 234);
   --hover-color: #252525ab;
   --border-color: #363636;
+  --bg-dark-blue-color: #1d9aed25;
+  --fill-blue-color: #1d99ed;
 }
 
 @layer base{

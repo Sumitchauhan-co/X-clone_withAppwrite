@@ -35,9 +35,9 @@ const Feed = () => {
             key={i}
             className="h-fit w-full border-(--border-color) border-t border-b flex flex-col cursor-pointer"
           >
-            <div className="h-fit w-full flex">
-              <div className="sm:h-full h-[75%] w-[10%] flex justify-center items-start lg:items-center">
-                <div className="w-10 rounded-[50%] aspect-square bg-center flex justify-center items-center">
+            <div className="h-fit w-full flex mb-2">
+              <div className="sm:h-full h-[75%] max-w-[10%] flex justify-center items-start lg:items-center">
+                <div className="min-w-10 rounded-[50%] aspect-square bg-center flex justify-center items-center shrink">
                   {p.profile ? (
                     <img src={p.profile} alt="" />
                   ) : (
@@ -47,7 +47,7 @@ const Feed = () => {
                   )}
                 </div>
               </div>
-              <div className="h-fit w-full flex flex-col sm:pt-2 sm:pb-2 relative">
+              <div className="h-fit w-full flex flex-col sm:pt-2 sm:pb-2 relative gap-2 m-2 ml-1">
                 <div className="h-fit w-full flex flex-row">
                   <div className="h-fit">
                     <span className="text-(--current-color) font-bold pr-2 hover:underline">
@@ -55,16 +55,16 @@ const Feed = () => {
                     </span>
                   </div>
                   <div className="h-fit">
-                    <span className="text-neutral-500 text-[0.9rem]"></span>
+                    {/* <span className="text-neutral-500 text-[0.9rem]"></span> */}
                     <span className="text-neutral-500 text-[0.9rem] pl-1 pr-1">
                       •
                     </span>
-                    <span className="text-neutral-500 text-[0.75rem] sm:text-[0.9rem] hover:underline">
+                    <span className="text-neutral-500 text-[0.8rem] sm:text-[0.9rem] hover:underline">
                       {formatPostTime(p.createdAt)}
                     </span>
                   </div>
                 </div>
-                <div className="h-full w-15% flex absolute right-2 top-2">
+                <div className="h-fit w-15% flex absolute right-0 top-0">
                   <div className="h-8 w-8 sm:grid hidden rounded-[50%] place-content-center fill-neutral-500 hover:bg-[#1d9aed25] hover:fill-[#1d99ed]">
                     <svg viewBox="0 0 33 32" aria-hidden="true" class="h-5 w-5">
                       <g>
@@ -80,13 +80,13 @@ const Feed = () => {
                     </svg>
                   </div>
                 </div>
-                <div className="h-fit w-full text-(--current-color) text-[0.8rem] sm:text-[0.9rem]">
+                <div className="h-fit w-full text-(--current-color) text-[0.9rem] font-semibold font-sans">
                   <span>{p.content}</span>
                 </div>
               </div>
             </div>
 
-            <div className="h-fit w-full flex flex-col justify-center items-start pl-[10%]">
+            <div className="h-fit w-full flex flex-col justify-center items-start pl-[10%] gap-2">
               {p.imageId && (
                 <div className="h-fit w-[75%] flex items-center border border-(--border-color) rounded-xl">
                   <div className="w-full aspect-video overflow-hidden">
