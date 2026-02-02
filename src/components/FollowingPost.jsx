@@ -92,7 +92,7 @@ const ForYouPost = () => {
               <div className="h-fit w-full flex flex-col pt-2 pb-2 relative">
                 <div className="h-fit w-full flex md:flex-row flex-col">
                   <div className="h-fit">
-                    <span className="text-(--current-color) font-bold pr-2 hover:underline">
+                    <span className="text-(--current-color) font-bold pr-2 hover:underline active:underline">
                       {item.user?.name
                         .trim()
                         .split(/\s+/)
@@ -107,20 +107,20 @@ const ForYouPost = () => {
                     <span className="text-neutral-500 text-[0.9rem] pl-1 pr-1">
                       •
                     </span>
-                    <span className="text-neutral-500 text-[0.9rem] hover:underline">
+                    <span className="text-neutral-500 text-[0.9rem] hover:underline active:underline">
                       Dec 13
                     </span>
                   </div>
                 </div>
                 <div className="h-full w-15% flex absolute right-2 top-2">
-                  <div className="h-8 w-8 sm:grid hidden rounded-[50%] place-content-center fill-neutral-500 hover:bg-[#1d9aed25] hover:fill-[#1d99ed]">
+                  <div className="h-8 w-8 sm:grid hidden rounded-[50%] place-content-center fill-neutral-500 hover:bg-(--bg-dark-blue-color) active:bg-(--bg-dark-blue-color) hover:fill-(--fill-blue-color) active:fill-(--fill-blue-color)">
                     <svg viewBox="0 0 33 32" aria-hidden="true" class="h-5 w-5">
                       <g>
                         <path d="M12.745 20.54l10.97-8.19c.539-.4 1.307-.244 1.564.38 1.349 3.288.746 7.241-1.938 9.955-2.683 2.714-6.417 3.31-9.83 1.954l-3.728 1.745c5.347 3.697 11.84 2.782 15.898-1.324 3.219-3.255 4.216-7.692 3.284-11.693l.008.009c-1.351-5.878.332-8.227 3.782-13.031L33 0l-4.54 4.59v-.014L12.743 20.544m-2.263 1.987c-3.837-3.707-3.175-9.446.1-12.755 2.42-2.449 6.388-3.448 9.852-1.979l3.72-1.737c-.67-.49-1.53-1.017-2.515-1.387-4.455-1.854-9.789-.931-13.41 2.728-3.483 3.523-4.579 8.94-2.697 13.561 1.405 3.454-.899 5.898-3.22 8.364C1.49 30.2.666 31.074 0 32l10.478-9.466"></path>
                       </g>
                     </svg>
                   </div>
-                  <div className="h-8 w-8 rounded-[50%] grid place-content-center fill-neutral-500 hover:bg-[#1d9aed25] hover:fill-[#1d99ed]">
+                  <div className="h-8 w-8 rounded-[50%] grid place-content-center fill-neutral-500 hover:bg-(--bg-dark-blue-color) active:bg-(--bg-dark-blue-color) hover:fill-(--fill-blue-color) active:fill-(--fill-blue-color)">
                     <svg viewBox="0 0 24 24" aria-hidden="true" class="h-5 w-5">
                       <g>
                         <path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path>
@@ -146,7 +146,7 @@ const ForYouPost = () => {
               </div>
               <div className="h-[6vh] w-full flex justify-between items-center">
                 <div className="h-fit w-fit flex items-center group">
-                  <div className="h-8 w-8 rounded-[50%] grid place-content-center fill-neutral-500 group-hover:bg-[#1d9aed25] group-hover:fill-[#1d99ed]">
+                  <div className="h-8 w-8 rounded-[50%] grid place-content-center fill-neutral-500 group-hover:bg-(--bg-dark-blue-color) group-hover:fill-(--fill-blue-color) group-active:bg-(--bg-dark-blue-color) group-active:fill-(--fill-blue-color)">
                     <svg
                       viewBox="0 0 24 24"
                       aria-hidden="true"
@@ -162,7 +162,7 @@ const ForYouPost = () => {
                   </span>
                 </div>
                 <div className="h-fit w-fit flex items-center group">
-                  <div className="h-8 w-8 rounded-[50%] grid place-content-center fill-neutral-500 group-hover:bg-[#24ed1d25] group-hover:fill-[#25db88c3]">
+                  <div className="h-8 w-8 rounded-[50%] grid place-content-center fill-neutral-500 group-hover:bg-(--repost-bg-color) group-hover:fill-(--repost-fill-color) group-active:bg-(--repost-bg-color) group-active:fill-(--repost-fill-color)">
                     <svg
                       viewBox="0 0 24 24"
                       aria-hidden="true"
@@ -173,12 +173,12 @@ const ForYouPost = () => {
                       </g>
                     </svg>
                   </div>
-                  <span className="text-neutral-500 text-[0.8rem] group-hover:text-[#25db88c3] relative right-1">
+                  <span className="text-neutral-500 text-[0.8rem] group-hover:text-(--repost-fill-color) relative right-1">
                     {item.dataset?.metrics.reposts}
                   </span>
                 </div>
                 <div className="h-fit w-fit flex items-center group">
-                  <div className="h-8 w-8 rounded-[50%] grid place-content-center fill-neutral-500 group-hover:bg-[#ed1d5f25] group-hover:fill-[#ed1d88ea]">
+                  <div className="h-8 w-8 rounded-[50%] grid place-content-center fill-neutral-500 group-hover:bg-(--like-bg-color) group-hover:fill-(--like-fill-color) group-active:bg-(--like-bg-color) group-active:fill-(--like-fill-color)">
                     <svg
                       viewBox="0 0 24 24"
                       aria-hidden="true"
@@ -189,12 +189,12 @@ const ForYouPost = () => {
                       </g>
                     </svg>
                   </div>
-                  <span className="text-neutral-500 text-[0.8rem] group-hover:text-[#ed1d88ea] relative right-1">
+                  <span className="text-neutral-500 text-[0.8rem] group-hover:text-(--like-fill-color) relative right-1">
                     {item.dataset?.metrics.likes}
                   </span>
                 </div>
                 <div className="h-fit w-fit flex items-center group">
-                  <div className="h-8 w-8 rounded-[50%] grid place-content-center fill-neutral-500 group-hover:bg-[#1d9aed25] group-hover:fill-[#1d99ed]">
+                  <div className="h-8 w-8 rounded-[50%] grid place-content-center fill-neutral-500 group-hover:bg-(--bg-dark-blue-color) group-hover:fill-(--fill-blue-color) group-active:bg-(--bg-dark-blue-color) group-active:fill-(--fill-blue-color)">
                     <svg
                       viewBox="0 0 24 24"
                       aria-hidden="true"
@@ -205,12 +205,12 @@ const ForYouPost = () => {
                       </g>
                     </svg>
                   </div>
-                  <span className="text-neutral-500 text-[0.8rem] group-hover:text-[#1d99ed] relative right-1">
+                  <span className="text-neutral-500 text-[0.8rem] group-hover:text-(--fill-blue-color) relative right-1">
                     {item.dataset?.metrics.views}
                   </span>
                 </div>
                 <div className="h-fit w-fit flex items-center pr-2">
-                  <div className="h-8 w-8 sm:grid hidden rounded-[50%] place-content-center fill-neutral-500 hover:bg-[#1d9aed25] hover:fill-[#1d99ed]">
+                  <div className="h-8 w-8 sm:grid hidden rounded-[50%] place-content-center fill-neutral-500 group-hover:bg-(--bg-dark-blue-color) group-hover:fill-(--fill-blue-color) group-active:bg-(--bg-dark-blue-color) group-active:fill-(--fill-blue-color)">
                     <svg
                       viewBox="0 0 24 24"
                       aria-hidden="true"
@@ -221,7 +221,7 @@ const ForYouPost = () => {
                       </g>
                     </svg>
                   </div>
-                  <div className="h-8 w-8 rounded-[50%] grid place-content-center fill-neutral-500 hover:bg-[#1d9aed25] hover:fill-[#1d99ed]">
+                  <div className="h-8 w-8 rounded-[50%] grid place-content-center fill-neutral-500 group-hover:bg-(--bg-dark-blue-color) group-hover:fill-(--fill-blue-color) group-active:bg-(--bg-dark-blue-color) group-active:fill-(--fill-blue-color)">
                     <svg
                       viewBox="0 0 24 24"
                       aria-hidden="true"

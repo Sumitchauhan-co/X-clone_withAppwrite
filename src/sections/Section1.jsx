@@ -10,7 +10,7 @@ const Section1 = () => {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
   const initial = user?.name?.[0]?.toUpperCase();
-  const username = user?.name?.toUpperCase();
+  const username = user?.name;
   const userId = user?.$id?.toUpperCase().toString().substring(0, 10) + ".....";
 
   const handleLogout = async () => {
@@ -24,7 +24,7 @@ const Section1 = () => {
         {/* logo */}
 
         <div className="h-[7vh] w-full pl-3 flex justify-start items-center">
-          <div className="h-12 w-12 fill-(--current-color) border rounded-[50%] hover:bg-(--hover-color) grid place-content-center cursor-pointer">
+          <div className="h-12 w-12 fill-(--current-color) border rounded-[50%] hover:bg-(--bg-secondary-color) active:bg-(--bg-secondary-color) grid place-content-center cursor-pointer">
             <svg viewBox="0 0 24 24" aria-hidden="true" class="h-7 w-7">
               <g>
                 <path d="M21.742 21.75l-7.563-11.179 7.056-8.321h-2.456l-5.691 6.714-4.54-6.714H2.359l7.29 10.776L2.25 21.75h2.456l6.035-7.118 4.818 7.118h6.191-.008zM7.739 3.818L18.81 20.182h-2.447L5.29 3.818h2.447z"></path>
@@ -39,7 +39,7 @@ const Section1 = () => {
           <li className="h-[10%] w-full group cursor-pointer">
             <NavLink
               to={`/home`}
-              className="h-full w-fit group-hover:bg-(--hover-color) flex items-center justify-start rounded-[25px] pl-5"
+              className="h-full w-fit group-hover:bg-(--bg-secondary-color) group-active:bg-(--bg-secondary-color) flex items-center justify-start rounded-[25px] pl-5"
             >
               {({ isActive }) => (
                 <>
@@ -72,7 +72,7 @@ const Section1 = () => {
           <li className="h-[10%] w-full group cursor-pointer">
             <NavLink
               to={`/explore`}
-              className="h-full w-fit group-hover:bg-(--hover-color) flex items-center justify-start rounded-[25px] pl-5"
+              className="h-full w-fit group-hover:bg-(--bg-secondary-color) group-active:bg-(--bg-secondary-color) flex items-center justify-start rounded-[25px] pl-5"
             >
               {({ isActive }) => (
                 <>
@@ -105,7 +105,7 @@ const Section1 = () => {
           <li className="h-[10%] w-full group cursor-pointer">
             <NavLink
               to={`/notification`}
-              className="h-full w-fit group-hover:bg-(--hover-color) flex items-center justify-start rounded-[25px] pl-5"
+              className="h-full w-fit group-hover:bg-(--bg-secondary-color) group-active:bg-(--bg-secondary-color) flex items-center justify-start rounded-[25px] pl-5"
             >
               {({ isActive }) => (
                 <>
@@ -138,7 +138,7 @@ const Section1 = () => {
           <li className="h-[10%] w-full group cursor-pointer">
             <NavLink
               to={`/follow`}
-              className="h-full w-fit group-hover:bg-(--hover-color) flex items-center justify-start rounded-[25px] pl-5"
+              className="h-full w-fit group-hover:bg-(--bg-secondary-color) group-active:bg-(--bg-secondary-color) flex items-center justify-start rounded-[25px] pl-5"
             >
               {({ isActive }) => (
                 <>
@@ -169,7 +169,7 @@ const Section1 = () => {
             </NavLink>
           </li>
           <li className="h-[10%] w-full group cursor-pointer">
-            <div className="h-full w-fit group-hover:bg-(--hover-color) flex items-center justify-start rounded-[25px] pl-5">
+            <div className="h-full w-fit group-hover:bg-(--bg-secondary-color) group-active:bg-(--bg-secondary-color) flex items-center justify-start rounded-[25px] pl-5">
               <div className="h-6 w-6 fill-(--current-color) flex items-center justify-start">
                 <svg viewBox="0 0 24 24" aria-hidden="true" class="">
                   <g>
@@ -183,7 +183,7 @@ const Section1 = () => {
             </div>
           </li>
           <li className="h-[10%] w-full group cursor-pointer">
-            <div className="h-full w-fit group-hover:bg-(--hover-color) flex items-center justify-start rounded-[25px] pl-5">
+            <div className="h-full w-fit group-hover:bg-(--bg-secondary-color) group-active:bg-(--bg-secondary-color) flex items-center justify-start rounded-[25px] pl-5">
               <div className="h-6 w-6 fill-(--current-color) flex items-center justify-start">
                 <svg viewBox="0 0 33 32" aria-hidden="true" class="">
                   <g>
@@ -197,7 +197,7 @@ const Section1 = () => {
             </div>
           </li>
           <li className="h-[10%] w-full group cursor-pointer">
-            <div className="h-full w-fit group-hover:bg-(--hover-color) flex items-center justify-start rounded-[25px] pl-5">
+            <div className="h-full w-fit group-hover:bg-(--bg-secondary-color) group-active:bg-(--bg-secondary-color) flex items-center justify-start rounded-[25px] pl-5">
               <div className="h-6 w-6 fill-(--current-color) flex items-center justify-start">
                 <svg viewBox="0 0 24 24" aria-hidden="true" class="">
                   <g>
@@ -211,7 +211,7 @@ const Section1 = () => {
             </div>
           </li>
           <li className="h-[10%] w-full group cursor-pointer">
-            <div className="h-full w-fit group-hover:bg-(--hover-color) flex items-center justify-start rounded-[25px] pl-5">
+            <div className="h-full w-fit group-hover:bg-(--bg-secondary-color) group-active:bg-(--bg-secondary-color) flex items-center justify-start rounded-[25px] pl-5">
               <div className="h-6 w-6 fill-(--current-color) flex items-center justify-start">
                 <svg viewBox="0 0 24 24" aria-hidden="true" class="">
                   <g>
@@ -225,7 +225,7 @@ const Section1 = () => {
             </div>
           </li>
           <li className="h-[10%] w-full group cursor-pointer">
-            <div className="h-full w-fit group-hover:bg-(--hover-color) flex items-center justify-start rounded-[25px] pl-5">
+            <div className="h-full w-fit group-hover:bg-(--bg-secondary-color) group-active:bg-(--bg-secondary-color) flex items-center justify-start rounded-[25px] pl-5">
               <div className="h-6 w-6 fill-(--current-color) flex items-center justify-start">
                 <svg viewBox="0 0 24 24" aria-hidden="true" class="">
                   <g>
@@ -239,7 +239,7 @@ const Section1 = () => {
             </div>
           </li>
           <li className="h-[10%] w-full group cursor-pointer">
-            <div className="h-full w-fit group-hover:bg-(--hover-color) flex items-center justify-start rounded-[25px] pl-5">
+            <div className="h-full w-fit group-hover:bg-(--bg-secondary-color) group-active:bg-(--bg-secondary-color) flex items-center justify-start rounded-[25px] pl-5">
               <div className="h-6 w-6 fill-(--current-color) flex items-center justify-start">
                 <svg viewBox="0 0 24 24" aria-hidden="true" class="">
                   <g>
@@ -257,7 +257,7 @@ const Section1 = () => {
         {/* post  button */}
 
         <div className="h-[8vh] xl:w-auto w-[8vh] flex justify-start items-center mt-2 xl:ml-0 ml-2">
-          <div className="xl:h-full h-[80%] w-[80%] xl:w-[85%] border rounded-[50%] xl:rounded-3xl bg-white hover:bg-neutral-200 flex justify-center items-center cursor-pointer">
+          <div className="xl:h-full h-[80%] w-[80%] xl:w-[85%] border rounded-[50%] xl:rounded-3xl bg-white hover:bg-neutral-200 active:bg-neutral-200 flex justify-center items-center cursor-pointer">
             <span className="text-black font-semibold xl:block hidden">
               Post
             </span>
@@ -275,7 +275,7 @@ const Section1 = () => {
 
         {/* user profile */}
 
-        <div className="h-[9vh] w-[95%] hover:bg-(--hover-color) absolute bottom-0 border rounded-4xl lg:p-3 p-0 lg:ml-0 m-3 cursor-pointer">
+        <div className="h-[9vh] w-[95%] hover:bg-(--bg-secondary-color) active:bg-(--bg-secondary-color) absolute bottom-0 border rounded-4xl lg:p-3 p-0 lg:ml-0 m-3 cursor-pointer">
           <div className="h-full w-full group flex items-center" tabIndex="0">
             <div className="h-9 w-9 border rounded-[50%] grid place-content-center lg:text-xl bg-[#84c346] text-white">
               <span>{initial}</span>
@@ -297,12 +297,12 @@ const Section1 = () => {
             </div>
 
             <div className="h-fit w-70 invisible group-focus-within:visible fixed z-2 left-25 bottom-25 flex flex-col justify-center rounded-2xl shadow-white shadow-[0_0_7px_rgba(0,0,0,0.05)] text-white text-sm font-bold bg-black">
-              <div className="h-10 pl-5 mt-3 w-full flex justify-start items-center hover:bg-[#16181C]">
+              <div className="h-10 pl-5 mt-3 w-full flex justify-start items-center hover:bg-(--bg-primary-color) active:bg-(--bg-primary-color)">
                 <span>Add an existing account</span>
               </div>
               <div
                 onClick={handleLogout}
-                className="h-10 pl-5 mb-3 w-full flex justify-start items-center hover:bg-[#16181C]"
+                className="h-10 pl-5 mb-3 w-full flex justify-start items-center hover:bg-(--bg-primary-color) active:bg-(--bg-primary-color)"
               >
                 <span>Log out</span>
               </div>

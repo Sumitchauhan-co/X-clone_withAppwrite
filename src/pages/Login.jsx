@@ -62,7 +62,7 @@ const Login = () => {
           <div className="h-fit w-[75%] md:w-[50%] p-3 md:p-8 flex justify-center items-center group">
             <div className="w-full md:w-[90%] lg:w-[75%] xl:w-[50%] flex flex-col text-white gap-10 md:gap-18">
               <div className="w-full text-center flex flex-col justify-start items-center gap-3">
-                <h1 className="w-50 text-4xl md:text-5xl font-semibold group-has-hover:border-b-3 transition-all ease-in-out">
+                <h1 className="w-50 text-4xl md:text-5xl font-semibold group-has-hover:border-b-3 group-has-active:border-b-3 transition-all ease-in-out">
                   Login
                 </h1>
                 <p className="text-lg md:text-xl">To get started</p>
@@ -120,7 +120,7 @@ const Login = () => {
                     )}
                   </div>
                   <div>
-                    <button className="w-full p-2 font-semibold text-lg bg-neutral-100 hover:bg-neutral-200 text-black rounded-2xl flex justify-center items-center">
+                    <button className="w-full p-2 font-semibold text-lg bg-neutral-100 hover:bg-neutral-200 active:bg-neutral-200 text-black rounded-2xl flex justify-center items-center">
                       {loading ? (
                         <div className="h-full w-full flex justify-center items-center">
                           <div className="h-7 w-7 border-4 rounded-[50%] border-blue-950 border-t-blue-400 animate-spin"></div>
@@ -132,7 +132,7 @@ const Login = () => {
                   </div>
                   <div className="w-full flex justify-center text-sm sm:text-lg gap-2">
                     <p className="text-neutral-400">Don't have an account?</p>
-                    <span className="cursor-pointer hover:underline text-lg sm:text-xl">
+                    <span className="cursor-pointer hover:underline active:underline text-lg sm:text-xl">
                       <Link to="/signup">Signup</Link>
                     </span>
                   </div>

@@ -36,8 +36,8 @@ const Feed = () => {
             className="h-fit w-full border-(--border-color) border-t border-b flex flex-col cursor-pointer"
           >
             <div className="h-fit w-full flex mb-2">
-              <div className="sm:h-full h-[75%] min-w-[10%] flex justify-center items-center lg:items-center">
-                <div className="min-w-10 rounded-[50%] aspect-square bg-center flex justify-center items-center shrink">
+              <div className="sm:h-full h-[75%] min-w-[10%] flex justify-center items-start">
+                <div className="min-w-10 sm:pt-2 pt-0  rounded-[50%] aspect-square bg-center flex justify-center items-center shrink">
                   {p.profile ? (
                     <img src={p.profile} alt="" />
                   ) : (
@@ -47,10 +47,10 @@ const Feed = () => {
                   )}
                 </div>
               </div>
-              <div className="h-fit w-full flex flex-col sm:pt-2 sm:pb-2 relative gap-2 m-2 ml-1 mt-2 sm:mt-0">
+              <div className="h-fit w-full flex flex-col sm:pt-2 sm:pb-2 relative gap-2 m-2 ml-1 mt-1 sm:mt-0">
                 <div className="h-fit w-full flex flex-row">
                   <div className="h-fit">
-                    <span className="text-(--current-color) font-bold pr-2 hover:underline">
+                    <span className="text-(--current-color) font-bold pr-2 hover:underline active:underline">
                       {p.username}
                     </span>
                   </div>
@@ -59,20 +59,20 @@ const Feed = () => {
                     <span className="text-neutral-500 text-[0.9rem] pl-1 pr-1">
                       •
                     </span>
-                    <span className="text-neutral-500 text-[0.8rem] sm:text-[0.9rem] hover:underline">
+                    <span className="text-neutral-500 text-[0.8rem] sm:text-[0.9rem] hover:underline active:underline">
                       {formatPostTime(p.createdAt)}
                     </span>
                   </div>
                 </div>
                 <div className="h-fit w-15% flex absolute right-0 top-0">
-                  <div className="h-8 w-8 sm:grid hidden rounded-[50%] place-content-center fill-neutral-500 hover:bg-[#1d9aed25] hover:fill-[#1d99ed]">
+                  <div className="h-8 w-8 sm:grid hidden rounded-[50%] place-content-center fill-neutral-500 group-hover:bg-(--bg-dark-blue-color) group-hover:fill-(--fill-blue-color) group-active:bg-(--bg-dark-blue-color) group-active:fill-(--fill-blue-color)">
                     <svg viewBox="0 0 33 32" aria-hidden="true" class="h-5 w-5">
                       <g>
                         <path d="M12.745 20.54l10.97-8.19c.539-.4 1.307-.244 1.564.38 1.349 3.288.746 7.241-1.938 9.955-2.683 2.714-6.417 3.31-9.83 1.954l-3.728 1.745c5.347 3.697 11.84 2.782 15.898-1.324 3.219-3.255 4.216-7.692 3.284-11.693l.008.009c-1.351-5.878.332-8.227 3.782-13.031L33 0l-4.54 4.59v-.014L12.743 20.544m-2.263 1.987c-3.837-3.707-3.175-9.446.1-12.755 2.42-2.449 6.388-3.448 9.852-1.979l3.72-1.737c-.67-.49-1.53-1.017-2.515-1.387-4.455-1.854-9.789-.931-13.41 2.728-3.483 3.523-4.579 8.94-2.697 13.561 1.405 3.454-.899 5.898-3.22 8.364C1.49 30.2.666 31.074 0 32l10.478-9.466"></path>
                       </g>
                     </svg>
                   </div>
-                  <div className="h-8 w-8 rounded-[50%] grid place-content-center fill-neutral-500 hover:bg-[#1d9aed25] hover:fill-[#1d99ed]">
+                  <div className="h-8 w-8 rounded-[50%] grid place-content-center fill-neutral-500 group-hover:bg-(--bg-dark-blue-color) group-hover:fill-(--fill-blue-color) group-active:bg-(--bg-dark-blue-color) group-active:fill-(--fill-blue-color)">
                     <svg viewBox="0 0 24 24" aria-hidden="true" class="h-5 w-5">
                       <g>
                         <path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path>
@@ -89,19 +89,36 @@ const Feed = () => {
             <div className="h-fit w-full flex flex-col justify-center items-start pl-[10%] gap-2">
               {p.imageId && (
                 <div className="h-fit w-[75%] flex items-center border border-(--border-color) rounded-xl">
-                  <div className="w-full aspect-video overflow-hidden">
-                    <img
-                      className="h-full w-full object-cover object-center rounded-xl"
-                      src={getFileUrl(p.imageId)}
-                      // url = [ENDPOINT]/storage/buckets/[BUCKET_ID]/files/[imageId]/preview?project=[PROJECT_ID]
-                      alt="post"
-                    />
+                  <div className="w-full aspect-auto overflow-hidden">
+                    <a
+                      href={getFileUrl(p.imageId)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {p.mediaType === "image" && (
+                        <img
+                          className="h-full w-full object-cover object-center rounded-xl"
+                          src={getFileUrl(p.imageId)}
+                          alt="post"
+                        />
+                      )}
+
+                      {p.mediaType === "video" && (
+                        <video
+                          className="h-full w-full object-cover object-center rounded-xl"
+                          controls
+                          src={getFileUrl(p.imageId)}
+                        ></video>
+                      )}
+
+                      {/*url = [ENDPOINT]/storage/buckets/[BUCKET_ID]/files/[imageId]/preview?project=[PROJECT_ID] */}
+                    </a>
                   </div>
                 </div>
               )}
               <div className="h-[6vh] w-full flex justify-between items-center">
                 <div className="h-fit w-fit flex items-center group">
-                  <div className="h-8 w-8 rounded-[50%] grid place-content-center fill-neutral-500 group-hover:bg-[#1d9aed25] group-hover:fill-[#1d99ed]">
+                  <div className="h-8 w-8 rounded-[50%] grid place-content-center fill-neutral-500 group-hover:bg-(--bg-dark-blue-color) group-hover:fill-(--fill-blue-color) group-active:bg-(--bg-dark-blue-color) group-active:fill-(--fill-blue-color)">
                     <svg
                       viewBox="0 0 24 24"
                       aria-hidden="true"
@@ -112,12 +129,12 @@ const Feed = () => {
                       </g>
                     </svg>
                   </div>
-                  <span className="text-neutral-500 text-[0.8rem] group-hover:text-[#1d99ed] relative right-1">
+                  <span className="text-neutral-500 text-[0.8rem] group-hover:text-(--fill-blue-color) group-active:text-(--fill-blue-color) relative right-1">
                     0
                   </span>
                 </div>
                 <div className="h-fit w-fit flex items-center group">
-                  <div className="h-8 w-8 rounded-[50%] grid place-content-center fill-neutral-500 group-hover:bg-[#24ed1d25] group-hover:fill-[#25db88c3]">
+                  <div className="h-8 w-8 rounded-[50%] grid place-content-center fill-neutral-500 group-hover:bg-(--repost-bg-color) group-hover:fill-(--repost-fill-color) group-active:bg-(--repost-bg-color) group-active:fill-(--repost-fill-color)">
                     <svg
                       viewBox="0 0 24 24"
                       aria-hidden="true"
@@ -128,12 +145,12 @@ const Feed = () => {
                       </g>
                     </svg>
                   </div>
-                  <span className="text-neutral-500 text-[0.8rem] group-hover:text-[#25db88c3] relative right-1">
+                  <span className="text-neutral-500 text-[0.8rem] group-hover:text-(--repost-fill-color) relative right-1">
                     0
                   </span>
                 </div>
                 <div className="h-fit w-fit flex items-center group">
-                  <div className="h-8 w-8 rounded-[50%] grid place-content-center fill-neutral-500 group-hover:bg-[#ed1d5f25] group-hover:fill-[#ed1d88ea]">
+                  <div className="h-8 w-8 rounded-[50%] grid place-content-center fill-neutral-500 group-hover:bg-(--like-bg-color) group-hover:fill-(--like-fill-color) group-active:bg-(--like-bg-color) group-active:fill-(--like-fill-color)">
                     <svg
                       viewBox="0 0 24 24"
                       aria-hidden="true"
@@ -144,12 +161,12 @@ const Feed = () => {
                       </g>
                     </svg>
                   </div>
-                  <span className="text-neutral-500 text-[0.8rem] group-hover:text-[#ed1d88ea] relative right-1">
+                  <span className="text-neutral-500 text-[0.8rem] group-hover:text-(--like-fill-color) relative right-1">
                     0
                   </span>
                 </div>
                 <div className="h-fit w-fit flex items-center group">
-                  <div className="h-8 w-8 rounded-[50%] grid place-content-center fill-neutral-500 group-hover:bg-[#1d9aed25] group-hover:fill-[#1d99ed]">
+                  <div className="h-8 w-8 rounded-[50%] grid place-content-center fill-neutral-500 group-hover:bg-(--bg-dark-blue-color) group-hover:fill-(--fill-blue-color) group-active:bg-(--bg-dark-blue-color) group-active:fill-(--fill-blue-color)">
                     <svg
                       viewBox="0 0 24 24"
                       aria-hidden="true"
@@ -160,12 +177,12 @@ const Feed = () => {
                       </g>
                     </svg>
                   </div>
-                  <span className="text-neutral-500 text-[0.8rem] group-hover:text-[#1d99ed] relative right-1">
+                  <span className="text-neutral-500 text-[0.8rem] group-hover:text-(--fill-blue-color) relative right-1">
                     0
                   </span>
                 </div>
                 <div className="h-fit w-fit flex items-center pr-2">
-                  <div className="h-8 w-8 sm:grid hidden rounded-[50%] place-content-center fill-neutral-500 hover:bg-[#1d9aed25] hover:fill-[#1d99ed]">
+                  <div className="h-8 w-8 sm:grid hidden rounded-[50%] place-content-center fill-neutral-500 hover:bg-(--bg-dark-blue-color) hover:fill-(--fill-blue-color) active:bg-(--bg-dark-blue-color) active:fill-(--fill-blue-color)">
                     <svg
                       viewBox="0 0 24 24"
                       aria-hidden="true"
@@ -176,7 +193,7 @@ const Feed = () => {
                       </g>
                     </svg>
                   </div>
-                  <div className="h-8 w-8 rounded-[50%] grid place-content-center fill-neutral-500 hover:bg-[#1d9aed25] hover:fill-[#1d99ed]">
+                  <div className="h-8 w-8 rounded-[50%] grid place-content-center fill-neutral-500 hover:bg-(--bg-dark-blue-color) hover:fill-(--fill-blue-color) active:bg-(--bg-dark-blue-color) active:fill-(--fill-blue-color)">
                     <svg
                       viewBox="0 0 24 24"
                       aria-hidden="true"

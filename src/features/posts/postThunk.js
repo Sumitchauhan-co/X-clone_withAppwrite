@@ -16,7 +16,7 @@ export const fetchPosts = createAsyncThunk(
 
 export const addPost = createAsyncThunk(
   "posts/add",
-  async ({ content, imageFile }, thunkAPI) => {
+  async ({ content, imageFile, mediaType }, thunkAPI) => {
     try {
       const { auth } = thunkAPI.getState();
       const user = auth.user;
@@ -36,6 +36,7 @@ export const addPost = createAsyncThunk(
         username: user.name,
         content,
         ...imageData,
+        mediaType,
       };
 
       console.log(payload);

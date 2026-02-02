@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState, useCallback, } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { formatPostTime } from "../utils/time";
 import { RiErrorWarningFill } from "react-icons/ri";
 import { useSelector } from "react-redux";
@@ -49,7 +49,9 @@ export default function TodaysNews({ isReq }) {
 
   if (errorDisplay)
     return (
-      <div className={`h-fit w-fit flex items-center gap-2 p-2 text-(--current-color) border-(--border-color) rounded-2xl ${!isReq ? "border" : ""} rounded-tr-none relative cursor-pointer`}>
+      <div
+        className={`h-fit w-fit flex items-center gap-2 p-2 text-(--current-color) border-(--border-color) rounded-2xl ${!isReq ? "border" : ""} rounded-tr-none relative cursor-pointer`}
+      >
         <RiErrorWarningFill />
         <span className="text-sm md:text-[1rem] text-[#999] italic font-semibold">
           {`Fetch failed (Todays News) ${category} :/`}
@@ -92,7 +94,7 @@ export default function TodaysNews({ isReq }) {
           {articles.map((article, i) => (
             <div
               key={i}
-              className="h-fit w-full p-3 hover:bg-neutral-950 cursor-pointer rounded-b-2xl"
+              className="h-fit w-full p-3 hover:bg-(--bg-primary-color) active:bg-(--bg-primary-color) cursor-pointer rounded-b-2xl"
             >
               <p className="h-[75%] w-full flex justify-start items-center text-wrap text-(--current-color) font-semibold">
                 {article.title}
@@ -104,7 +106,7 @@ export default function TodaysNews({ isReq }) {
           ))}
           {!isReq && (
             <div
-              className={`h-12 w-full p-3 hover:bg-neutral-950 rounded-b-2xl flex justify-start items-center text-blue-400 text-[0.9rem] cursor-pointer ${
+              className={`h-12 w-full p-3 hover:bg-(--bg-primary-color) active:bg-(--bg-primary-color) rounded-b-2xl flex justify-start items-center text-blue-400 text-[0.9rem] cursor-pointer ${
                 hidden ? "hidden" : "block"
               }`}
             >

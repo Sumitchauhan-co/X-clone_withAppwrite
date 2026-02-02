@@ -14,7 +14,7 @@ function Whatshappening({ isReq }) {
           What's happening
         </span>
       </div>
-      <div className="h-20 w-full p-3 relative hover:bg-neutral-950 cursor-pointer">
+      <div className="h-20 w-full p-3 relative hover:bg-(--bg-primary-color) active:bg-(--bg-primary-color) cursor-pointer">
         <p className="h-[25%] w-full flex justify-start items-center text-wrap text-neutral-500 text-[0.75rem] md:text-[0.8rem]">
           Lorem
         </p>
@@ -35,7 +35,7 @@ function Whatshappening({ isReq }) {
       {!isReq && (
         <Link
           to={`/explore`}
-          className="h-12 w-full p-3 hover:bg-neutral-950 rounded-b-2xl flex justify-start items-center text-blue-400 text-[0.9rem] cursor-pointer"
+          className="h-12 w-full p-3 hover:bg-(--bg-primary-color) active:bg-(--bg-primary-color) rounded-b-2xl flex justify-start items-center text-blue-400 text-[0.9rem] cursor-pointer"
         >
           <span>Show more</span>
         </Link>

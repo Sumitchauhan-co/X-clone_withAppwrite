@@ -6,14 +6,19 @@
 
 :root {
   --current-color: rgb(231, 233, 234);
-  --hover-color: #252525ab;
+  --bg-secondary-color: #252525ab;
   --border-color: #363636;
+  --bg-primary-color: #0a0a0a;
   --bg-dark-blue-color: #1d9aed25;
   --fill-blue-color: #1d99ed;
+  --repost-bg-color: #24ed1d25;
+  --repost-fill-color: #25db88c3;
+  --like-bg-color: #ed1d5f25;
+  --like-fill-color: #ed1d88ea;
 }
 
-@layer base{
-    input {
-        @apply text-neutral-300;
-    }
+@layer base {
+  input {
+    @apply text-neutral-300;
+  }
 }

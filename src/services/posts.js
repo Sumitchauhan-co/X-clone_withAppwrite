@@ -27,15 +27,17 @@ export const createPost = ({
   content,
   imageId,
   imageUrl,
+  mediaType,
 }) => {
-  console.log(imageId, imageUrl);
+  // console.log(imageId, imageUrl);
   return databases.createDocument(DB_ID, POSTS_COLLECTION_ID, ID.unique(), {
     userId,
     username,
     content,
     createdAt: new Date().toISOString(),
-    imageId: imageId ?? null,
-    imageUrl: imageUrl ?? null,
+    imageId: imageId,
+    imageUrl: imageUrl,
+    mediaType: mediaType,
   });
 };
 
@@ -46,6 +48,6 @@ export const getPosts = () => {
 };
 
 export const getFileUrl = (fileId) => {
-  console.log("services:posts.js -> ", fileId);
+  // console.log("services:posts.js -> ", fileId);
   return storage.getFileView(BUCKET_ID, fileId).toString();
 };

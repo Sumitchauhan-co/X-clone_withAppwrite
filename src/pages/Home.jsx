@@ -49,7 +49,7 @@ const Home = () => {
             resetScroll();
             dispatch(setHomeActive("for you"));
           }}
-          className="h-full w-[50%] hover:bg-(--hover-color) flex justify-center items-end cursor-pointer"
+          className="h-full w-[50%] hover:bg-(--bg-secondary-color) active:bg-(--bg-secondary-color) flex justify-center items-end cursor-pointer"
         >
           <div
             className={`sm:h-full h-[75%] w-fit ${
@@ -66,7 +66,7 @@ const Home = () => {
             resetScroll();
             dispatch(setHomeActive("following"));
           }}
-          className="h-full w-[50%] hover:bg-(--hover-color) flex justify-center items-end cursor-pointer group"
+          className="h-full w-[50%] hover:bg-(--bg-secondary-color) active:bg-(--bg-secondary-color) flex justify-center items-end cursor-pointer group"
         >
           <div
             className={`sm:h-full h-[75%] w-fit ${
