@@ -121,7 +121,13 @@ const Login = () => {
                   </div>
                   <div>
                     <button className="w-full p-2 font-semibold text-lg bg-neutral-100 hover:bg-neutral-200 text-black rounded-2xl flex justify-center items-center">
-                      {loading ? "Logging" : "Login"}
+                      {loading ? (
+                        <div className="h-full w-full flex justify-center items-center">
+                          <div className="h-7 w-7 border-4 rounded-[50%] border-blue-950 border-t-blue-400 animate-spin"></div>
+                        </div>
+                      ) : (
+                        "Login"
+                      )}
                     </button>
                   </div>
                   <div className="w-full flex justify-center text-sm sm:text-lg gap-2">
