@@ -6,7 +6,8 @@ import { useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setHomeActive } from "../features/ui/uiSlice";
 import PostBox from "../components/PostBox";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { logoutUser } from "../features/auth/authThunk";
 
 const Home = () => {
   const scrollRef = useRef(null);
@@ -23,6 +24,13 @@ const Home = () => {
     }
   };
 
+  const navigate = useNavigate()
+
+  const handleLogout = async () => {
+      await dispatch(logoutUser());
+      navigate("/login", { replace: true });
+    };
+
   return (
     <div
       ref={scrollRef}
@@ -30,9 +38,31 @@ const Home = () => {
     >
       {/* header for only phone */}
 
-      <div className="h-[7vh] flex justify-center items-center sm:hidden fill-[#cecece] relative shrink-0 z-3">
+      <div className="h-[7vh] group flex justify-center items-center sm:hidden fill-[#cecece] relative shrink-0 z-3" tabIndex="0">
         <div className="h-6 w-6 border rounded-[50%] grid place-content-center bg-[#84c346] text-[#eaeaea] text-sm absolute top-3 left-3 cursor-pointer">
           <span>{initial}</span>
+        </div>
+        <div className="h-fit w-50 invisible group-focus-within:visible group-active-within:visible fixed z-2 left-3 bottom-12 flex flex-col justify-center rounded-2xl transition-all duration-700 ease-out transform translate-y-0 text-white text-[0.8rem] sm:text-sm font-bold bg-black shadow-white shadow-[0_0_7px_rgba(0,0,0,0.05)] animate-pulse">
+          <div className="h-7 pl-5 mt-3 w-full flex justify-start items-center hover:bg-(--bg-primary-color) active:bg-(--bg-primary-color)">
+            <span>Add an existing account</span>
+          </div>
+          <div
+            onClick={handleLogout}
+            className="h-7 pl-5 mb-3 w-full flex justify-start items-center hover:bg-(--bg-primary-color) active:bg-(--bg-primary-color)"
+          >
+            <span>Log out</span>
+          </div>
+          {/* <div className="w-full flex justify-center items-center relative">
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              class="absolute h-3 w-3 invert rotate-180 -bottom-2.25"
+            >
+              <g>
+                <path d="M22 17H2L12 6l10 11z"></path>
+              </g>
+            </svg>
+          </div> */}
         </div>
         <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6">
           <g>

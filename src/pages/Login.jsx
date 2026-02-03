@@ -59,7 +59,7 @@ const Login = () => {
               </g>
             </svg>
           </div>
-          <div className="h-fit w-[75%] md:w-[50%] p-3 md:p-8 flex justify-center items-center group">
+          <div className="h-fit w-[80%] sm:w-[50%] p-3 md:p-8 flex justify-center items-center group">
             <div className="w-full md:w-[90%] lg:w-[75%] xl:w-[50%] flex flex-col text-white gap-10 md:gap-18">
               <div className="w-full text-center flex flex-col justify-start items-center gap-3">
                 <h1 className="w-50 text-4xl md:text-5xl font-semibold group-has-hover:border-b-3 group-has-active:border-b-3 transition-all ease-in-out">
@@ -89,7 +89,7 @@ const Login = () => {
                       </p>
                     )}
                   </div>
-                  <div className="w-full flex flex-col gap-3">
+                  <div className="w-full flex flex-col gap-3 mb-3">
                     <label className="w-15 text-xl font-semibold">
                       Password
                     </label>
@@ -130,7 +130,7 @@ const Login = () => {
                       )}
                     </button>
                   </div>
-                  <div className="w-full flex justify-center text-sm sm:text-lg gap-2">
+                  <div className="w-full flex justify-center items-center text-sm sm:text-lg gap-2">
                     <p className="text-neutral-400">Don't have an account?</p>
                     <span className="cursor-pointer hover:underline active:underline text-lg sm:text-xl">
                       <Link to="/signup">Signup</Link>

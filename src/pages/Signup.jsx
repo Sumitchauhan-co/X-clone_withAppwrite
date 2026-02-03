@@ -40,8 +40,8 @@ const Signup = () => {
           </g>
         </svg>
       </div>
-      <div className="h-fit w-[75%] md:w-[50%] lg p-3 md:p-8 flex justify-center items-center group">
-        <div className="w-full md:w-[90%] lg:w-[75%] xl:w-[50%] flex flex-col text-white gap-10 md:gap-18">
+      <div className="h-fit w-[80%] sm:w-[50%] lg p-3 md:p-8 flex justify-center items-center group">
+        <div className="w-full md:w-[90%] lg:w-[75%] xl:w-[50%] flex flex-col text-white gap-8 md:gap-18">
           <div className="w-full text-center flex flex-col justify-start items-center gap-3">
             <h1 className="w-50 text-4xl md:text-5xl font-semibold group-has-hover:border-b-3 group-has-active:border-b-3 transition-all ease-in-out">
               Sign up
@@ -79,7 +79,7 @@ const Signup = () => {
                   <p className="text-sm text-red-500">{errors.email.message}</p>
                 )}
               </div>
-              <div className="w-full flex flex-col gap-3">
+              <div className="w-full flex flex-col gap-3 mb-2">
                 <label className="w-15 text-xl font-semibold">Password</label>
                 <div className="w-full relative flex justify-end items-center group">
                   <input
