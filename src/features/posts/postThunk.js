@@ -47,3 +47,15 @@ export const addPost = createAsyncThunk(
     }
   },
 );
+
+export const deletePost = createAsyncThunk(
+  "posts/delete",
+  async (postId, { rejectWithValue }) => {
+    try {
+      await postsAPI.deletePost(postId);
+      return postId; // return id to update UI
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
+  },
+);

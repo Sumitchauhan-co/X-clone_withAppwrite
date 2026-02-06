@@ -83,3 +83,7 @@ export const incrementCommentCount = async (postId) => {
 export const updatePost = async (postId, data) => {
   return databases.updateDocument(DB_ID, POSTS_COLLECTION_ID, postId, data);
 };
+
+export const deletePost = async (postId) => {
+  return databases.deleteDocument(DB_ID, POSTS_COLLECTION_ID, postId);
+};

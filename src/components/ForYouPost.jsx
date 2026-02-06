@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { formatPostTime } from "../utils/time";
-import { fetchPosts } from "../features/posts/postThunk";
+import { deletePost, fetchPosts } from "../features/posts/postThunk";
 import { getFileUrl } from "../services/posts";
 import {
   fetchUserLikes,
@@ -18,9 +18,26 @@ const Feed = () => {
 
   const inHomeIsActive = useSelector((state) => state.ui.inHomeIsActive);
 
-  const user = useSelector((s) => s.auth.user);
+  const {user} = useSelector((s) => s.auth);
 
   const navigate = useNavigate();
+
+  const [reload, setReload] = useState(false);
+
+  // const [deleteId, setDeleteId] = useState(null);
+
+  // const handleDelete = (p) => {
+  //     dispatch(deletePost(p.$id));
+  //   setReload((prev) => !prev);
+  // };
+
+  const handleDelete = async (p) => {
+    // console.log(p, user);
+    if (p.userId === user.$id) {
+      await dispatch(deletePost(p.$id));
+    }
+    setReload((prev) => !prev);
+  };
 
   useEffect(() => {
     dispatch(fetchPosts());
@@ -28,7 +45,7 @@ const Feed = () => {
     if (user?.$id) {
       dispatch(fetchUserLikes());
     }
-  }, [dispatch, user]);
+  }, [dispatch, user, reload]);
 
   // if (list.length > 0) {
   //   console.log("for you post : list ->", list);
@@ -87,7 +104,11 @@ const Feed = () => {
                       </span>
                     </div>
                   </div>
-                  <div className="h-fit w-15% flex absolute right-0 top-0">
+                  <div
+                    onClick={(e) => e.stopPropagation()}
+                    tabIndex={0}
+                    className="h-fit w-15% group flex absolute right-0 top-0"
+                  >
                     <div className="h-8 w-8 sm:grid hidden rounded-[50%] place-content-center fill-neutral-500 hover:bg-(--bg-dark-blue-color) hover:fill-(--fill-blue-color) active:bg-(--bg-dark-blue-color) active:fill-(--fill-blue-color)">
                       <svg
                         viewBox="0 0 33 32"
@@ -110,6 +131,43 @@ const Feed = () => {
                         </g>
                       </svg>
                     </div>
+                    <div className="h-fit w-45 scale-75 sm:scale-100 invisible group-focus-within:visible fixed z-3 top-20 sm:top-50 right-5 lg:right-125 flex flex-col justify-center rounded-2xl shadow-white shadow-[0_0_7px_rgba(0,0,0,0.05)] text-white text-sm font-bold bg-black animate-pulse cursor-pointer">
+                      <div
+                        onClick={() => handleDelete(p)}
+                        className="h-7 my-3 w-full flex justify-center items-center hover:bg-(--bg-primary-color) active:bg-(--bg-primary-color) rounded-lg"
+                      >
+                        <span>Delete post</span>
+                      </div>
+                    </div>
+                    {/* <div className="h-fit w-45 scale-75 sm:scale-100 invisible group-focus-within:visible fixed z-3 top-20 sm:top-40 right-5 lg:right-150 flex flex-col justify-center rounded-2xl shadow-white shadow-[0_0_7px_rgba(0,0,0,0.05)] text-white text-sm font-bold bg-black animate-pulse cursor-pointer">
+                      <div
+                        onClick={() => setDeleteId(p.$id)}
+                        className="h-7 my-3 w-full flex justify-center items-center hover:bg-(--bg-primary-color) active:bg-(--bg-primary-color) rounded-lg"
+                      >
+                        <span>Delete post</span>
+                      </div>
+                    </div> */}
+
+                    {/* {deleteId && (
+                      <div className="fixed inset-0 flex items-center justify-center bg-black/50">
+                        <div className="bg-white p-4 rounded">
+                          <p>Are you sure you want to delete this post?</p>
+
+                          <button onClick={() => setDeleteId(null)}>
+                            Cancel
+                          </button>
+
+                          <button
+                            onClick={() => {
+                              dispatch(deletePostThunk(deleteId));
+                              setDeleteId(null);
+                            }}
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </div>
+                    )} */}
                   </div>
                   <div className="h-fit w-full text-(--current-color) text-sm sm:text-lg font-sans">
                     <span>{p.content}</span>

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchPosts, addPost } from "./postThunk";
+import { fetchPosts, addPost, deletePost } from "./postThunk";
 import { toggleLike } from "../post_likes/PostLikesThunk";
 import { addComment, deleteComment } from "../post_comments/PostCommentsThunk";
 
@@ -64,6 +64,11 @@ const postsSlice = createSlice({
       if (post && post.commentsCount > 0) {
         post.commentsCount -= 1;
       }
+    });
+    b.addCase(deletePost.fulfilled, (state, action) => {
+      const postId = action.payload;
+
+      state.posts = state.posts.filter((post) => post.$id !== postId);
     });
   },
 });

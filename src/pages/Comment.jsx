@@ -31,6 +31,7 @@ const Comment = () => {
   const textareaRef = useRef(null);
   const { user } = useSelector((state) => state.auth);
   const initial = user?.name?.[0]?.toUpperCase();
+  const [reload, setReload] = useState(false);
 
   const { comments } = useSelector((state) => state.comments);
 
@@ -38,14 +39,18 @@ const Comment = () => {
     fileInputRef.current.click();
   };
 
-  const handleDelete = (comment) => {
-    dispatch(
-      deleteComment({
-        commentId: comment.$id,
-        postId: comment.postId,
-        commentsCount: post.commentsCount,
-      }),
-    );
+  const handleDelete = (c) => {
+    // console.log(c, user);
+    if (c.userId === user.$id) {
+      dispatch(
+        deleteComment({
+          commentId: c.$id,
+          postId: c.postId,
+          commentsCount: post.commentsCount,
+        }),
+      );
+    }
+    setReload((prev) => !prev);
   };
 
   // const handleFileChange = (e) => {
@@ -94,7 +99,7 @@ const Comment = () => {
 
   useEffect(() => {
     dispatch(fetchComments(postId));
-  }, [postId, dispatch]);
+  }, [postId, dispatch, reload]);
 
   // console.log(likedPostIds, isLiked)
 
@@ -537,10 +542,10 @@ const Comment = () => {
                             <path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path>
                           </g>
                         </svg>
-                        <div className="h-fit w-50 scale-75 sm:scale-100 invisible group-focus-within:visible fixed z-3 top-5 right-5 lg:right-125 flex flex-col justify-center rounded-2xl shadow-white shadow-[0_0_7px_rgba(0,0,0,0.05)] text-white text-sm font-bold bg-black animate-pulse cursor-pointer">
+                        <div className="h-fit w-50 scale-75 sm:scale-100 invisible group-focus-within:visible fixed z-3 top-15 lg:top-25 right-0 lg:right-130 flex flex-col justify-center rounded-2xl shadow-white shadow-[0_0_7px_rgba(0,0,0,0.05)] text-white text-sm font-bold bg-black animate-pulse cursor-pointer">
                           <div
                             onClick={() => handleDelete(c)}
-                            className="h-10 my-2 w-full flex justify-center items-center hover:bg-(--bg-primary-color) active:bg-(--bg-primary-color) rounded-lg"
+                            className="h-7 my-3 w-full flex justify-center items-center hover:bg-(--bg-primary-color) active:bg-(--bg-primary-color) rounded-lg"
                           >
                             <span>Delete comment</span>
                           </div>
