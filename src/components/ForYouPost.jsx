@@ -131,7 +131,7 @@ const Feed = () => {
                         </g>
                       </svg>
                     </div>
-                    <div className="h-fit w-45 scale-75 sm:scale-100 invisible group-focus-within:visible fixed z-3 top-20 sm:top-50 right-5 lg:right-125 flex flex-col justify-center rounded-2xl shadow-white shadow-[0_0_7px_rgba(0,0,0,0.05)] text-white text-sm font-bold bg-black animate-pulse cursor-pointer">
+                    <div className="h-fit w-45 scale-90 sm:scale-100 invisible group-focus-within:visible fixed z-3 top-20 sm:top-50 right-5 lg:right-125 flex flex-col justify-center rounded-2xl shadow-white shadow-[0_0_7px_rgba(0,0,0,0.05)] text-white text-sm font-bold bg-black animate-pulse cursor-pointer">
                       <div
                         onClick={() => handleDelete(p)}
                         className="h-7 my-3 w-full flex justify-center items-center hover:bg-(--bg-primary-color) active:bg-(--bg-primary-color) rounded-lg"
