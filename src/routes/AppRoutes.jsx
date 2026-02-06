@@ -10,7 +10,8 @@ import PrivateRoutes from "./privateRoutes";
 import AppLayout from "../layouts/AppLayout";
 import PublicLayout from "../layouts/PublicLayout";
 import Post from "../pages/Post";
-// import App from "../App";
+import Comment from "../pages/Comment";
+// import App from "../App"
 
 const AppRoutes = () => {
   return (
@@ -27,6 +28,7 @@ const AppRoutes = () => {
           <Route path="/notification" element={<Notification />} />
           <Route path="/follow" element={<Follow />} />
           <Route path="/post" element={<Post />} />
+          <Route path="/home/comment/:postId" element={<Comment />} />
         </Route>
       </Route>
 

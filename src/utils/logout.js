@@ -1,6 +1,5 @@
 // Review ⛏️⚙️
 
-
 import { useDispatch } from "react-redux";
 import { logoutUser } from "./authThunks";
 
@@ -13,4 +12,3 @@ const LogoutButton = () => {
 
   return <button onClick={handleLogout}>Logout</button>;
 };
-

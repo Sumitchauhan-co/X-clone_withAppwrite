@@ -53,19 +53,27 @@ const Section3 = () => {
 
       <div className="h-fit w-full flex flex-wrap pl-5">
         <div className="h-5 w-fit text-neutral-500 text-[0.65rem]">
-          <span className="hover:underline active:underline">Terms of Service</span>
+          <span className="hover:underline active:underline">
+            Terms of Service
+          </span>
           <span className="pl-2 pr-2">|</span>
         </div>
         <div className="h-5 w-fit text-neutral-500 text-[0.65rem]">
-          <span className="hover:underline active:underline">Privacy Policy</span>
+          <span className="hover:underline active:underline">
+            Privacy Policy
+          </span>
           <span className="pl-2 pr-2">|</span>
         </div>
         <div className="h-5 w-fit text-neutral-500 text-[0.65rem]">
-          <span className="hover:underline active:underline">Cookie Policy</span>
+          <span className="hover:underline active:underline">
+            Cookie Policy
+          </span>
           <span className="pl-2 pr-2">|</span>
         </div>
         <div className="h-5 w-fit text-neutral-500 text-[0.65rem]">
-          <span className="hover:underline active:underline">Accessibility</span>
+          <span className="hover:underline active:underline">
+            Accessibility
+          </span>
           <span className="pl-2 pr-2">|</span>
         </div>
         <div className="h-5 w-fit text-neutral-500 text-[0.65rem]">
@@ -74,7 +82,7 @@ const Section3 = () => {
         </div>
         <div className="h-5 w-fit text-neutral-500 text-[0.65rem]">
           <span className="hover:underline active:underline">More...</span>
-          <span className="pl-3">&copy;2025 X Corp.</span>
+          <span className="pl-3">&copy2025 X Corp.</span>
         </div>
       </div>
     </div>

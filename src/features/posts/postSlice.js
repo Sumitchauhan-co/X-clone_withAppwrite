@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchPosts, addPost } from "./postThunk";
+import { toggleLike } from "../post_likes/PostLikesThunk";
+import { addComment, deleteComment } from "../post_comments/PostCommentsThunk";
 
 const initialState = {
   list: [],
@@ -34,12 +36,35 @@ const postsSlice = createSlice({
           ...a.payload,
           ...a.meta.arg.imageData,
         });
-        console.log("REDUX payload:", a.payload);
+        // console.log("REDUX payload:", a.payload);
       })
       .addCase(addPost.rejected, (s, a) => {
         s.loading = false;
         s.error = a.payload;
       });
+    b.addCase(toggleLike.fulfilled, (state, action) => {
+      const { postId, newCount } = action.payload;
+
+      const post = state.list.find((p) => p.$id === postId);
+
+      if (post) {
+        post.likesCount = newCount;
+      }
+    });
+    b.addCase(addComment.fulfilled, (state, action) => {
+      const post = state.list.find((p) => p.$id === action.payload.postId);
+
+      if (post) {
+        post.commentsCount += 1;
+      }
+    });
+    b.addCase(deleteComment.fulfilled, (state, action) => {
+      const post = state.list.find((p) => p.$id === action.payload.postId);
+
+      if (post && post.commentsCount > 0) {
+        post.commentsCount -= 1;
+      }
+    });
   },
 });
 

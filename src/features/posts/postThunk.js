@@ -1,11 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import * as postAPI from "../../services/posts";
+import * as postsAPI from "../../services/posts";
 
 export const fetchPosts = createAsyncThunk(
   "posts/fetch",
   async (_, thunkAPI) => {
     try {
-      const res = await postAPI.getPosts();
+      const res = await postsAPI.getPosts();
       return res.documents;
     } catch (e) {
       console.error("ADD POST ERROR:", e);
@@ -23,13 +23,13 @@ export const addPost = createAsyncThunk(
 
       let imageData = {};
 
-      console.log(imageFile);
+      // console.log(imageFile);
 
       if (imageFile instanceof File) {
-        imageData = await postAPI.uploadPostImage(imageFile);
+        imageData = await postsAPI.uploadPostImage(imageFile);
       }
 
-      console.log("THUNK imageData :", imageData);
+      // console.log("THUNK imageData :", imageData);
 
       const payload = {
         userId: user.$id,
@@ -39,9 +39,9 @@ export const addPost = createAsyncThunk(
         mediaType,
       };
 
-      console.log(payload);
+      // console.log(payload);
 
-      return await postAPI.createPost(payload);
+      return await postsAPI.createPost(payload);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

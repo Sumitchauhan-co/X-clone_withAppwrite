@@ -24,7 +24,7 @@ const Login = () => {
 
   const onSubmit = (data) => {
     dispatch(loginUser(data));
-    // reset();
+    // reset()
   };
 
   useEffect(() => {

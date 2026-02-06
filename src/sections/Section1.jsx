@@ -257,8 +257,8 @@ const Section1 = () => {
         {/* post  button */}
 
         <div className="h-[8vh] xl:w-auto w-[8vh] flex justify-start items-center mt-2 xl:ml-0 ml-2">
-          <div className="xl:h-full h-[80%] w-[80%] xl:w-[85%] border rounded-[50%] xl:rounded-3xl bg-white hover:bg-neutral-200 active:bg-neutral-200 flex justify-center items-center cursor-pointer">
-            <span className="text-black font-semibold xl:block hidden">
+          <div className="xl:h-[90%] h-[80%] w-[80%] xl:w-[85%] border rounded-[50%] xl:rounded-3xl bg-neutral-100 hover:bg-neutral-200 active:bg-neutral-200 flex justify-center items-center cursor-pointer">
+            <span className="text-black text-[1rem] sm:text-lg font-semibold xl:block hidden">
               Post
             </span>
             <svg
@@ -281,7 +281,7 @@ const Section1 = () => {
               <span>{initial}</span>
             </div>
             <div className="h-full w-[70%] hidden xl:flex flex-col p-[0_15px_0_15px] overflow-hidden">
-              <div className="h-[50%] text-white flex justify-start items-center font-bold text-[0.9rem]  text-nowrap">
+              <div className="h-[50%] text-white flex justify-start items-center font-bold text-[1.1rem]  text-nowrap">
                 <span>{username}</span>
               </div>
               <div className="h-[50%] text-[#7d7d7d] flex justify-start items-center text-sm">
